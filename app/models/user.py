@@ -1,6 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 
 
@@ -21,7 +22,8 @@ class User(db.Model, UserMixin):
     updated_at = db.Column(db.DateTime(timezone=True), default=func.now())
 
     # USER CLASS RELATIONSHIPS
-
+    # One to many: User has many posts through owner_id
+    post = db.relationship('Post', back_populates='user', cascade='all, delete-orphan')
 
     @property
     def password(self):
@@ -52,7 +54,8 @@ class User(db.Model, UserMixin):
             'last_name': self.last_name,
             'username': self.username,
             'email': self.email,
-            'profile_pic': self.profile_pic
+            'profile_pic': self.profile_pic,
+            'post': [post.to_dict() for post in self.post]
         }
 
     def to_dict_info(self):

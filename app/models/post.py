@@ -14,7 +14,7 @@ class Post(db.Model):
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), default=func.now())
 
-    user = db.relationship('User', back_populates='posts')
+    user = db.relationship('User', back_populates='post')
 
     def to_dict(self):
         """
@@ -30,6 +30,24 @@ class Post(db.Model):
         return {
             "id": self.id,
             "user": self.user.to_dict_info(),
+            "post": self.post_text,
+            "created_at": self.created_at,
+            "updated_at": self.updated_at
+        }
+
+    def to_dict_no_user(self):
+        '''
+        Returns a dict representing Posts
+        {
+            id,
+            user,
+            post,
+            created_at,
+            updated_at,
+        }
+        '''
+        return{
+            "id": self.id,
             "post": self.post_text,
             "created_at": self.created_at,
             "updated_at": self.updated_at
