@@ -9,77 +9,107 @@ def seed_users():
         username='Demo',
         email='demo@aa.io',
         password='password',
+        birthday='Feb 14, 1996',
+        gender='Male'
         )
     mikael = User(
         first_name='Mikael',
         last_name='Kuniko',
         username='myko',
         email='myko@aa.io',
-        password='password')
+        password='password',
+        birthday='Feb 28, 1996',
+        gender='Male'
+        )
     agnes = User(
         first_name='Agnes',
         last_name='Song',
         username='aggy',
         email='aggy@aa.io',
-        password='password')
+        password='password',
+        birthday='Mar 14, 1996',
+        gender='Female'
+        )
     sergio = User(
         first_name='Sergio',
         last_name='Zap',
         username='serg',
         email='sergio@aa.io',
-        password='password')
+        password='password',
+        birthday='Jan 24, 1998',
+        gender='Male'
+        )
     lily = User(
         first_name='Lily',
         last_name='Mac',
         username='lilymax',
         email='lily@aa.io',
-        password='password')
+        password='password',
+        birthday='Aug 15, 1994',
+        gender='Female'
+        )
     jennie = User(
         first_name='Jennie',
         last_name='Ruby',
         username='jennierubyjane',
         email='jennie@aa.io',
-        password='password')
+        password='password',
+        birthday='Jan 16, 1996',
+        gender='Female'
+        )
     lisa = User(
         first_name='Lisa',
         last_name='Manobel',
         username='lalisa',
         email='lisa@aa.io',
-        password='password')
+        password='password',
+        birthday='Mar 27, 1997',
+        gender='Female'
+        )
     robert = User(
         first_name='Robert',
         last_name="Downey",
         username='marnie',
         email='marnie@aa.io',
-        password='password'
+        password='password',
+        birthday='Apr 4, 1965',
+        gender='Male'
         )
     zendaya = User(
         first_name='Zendaya',
         last_name="Coleman",
         username='zendaya',
         email='zendaya@aa.io',
-        password='password'
+        password='password',
+        birthday='Sep 1, 1996',
+        gender='Female'
         )
     tom = User(
         first_name='Tom',
         last_name="Holland",
         username='spiderman',
         email='spidey@aa.io',
-        password='password'
+        password='password',
+        birthday='Jun 1, 1996',
+        gender='Male'
         )
     chrollo = User(
         first_name='Chrollo',
         last_name='Lucilfer',
         username='chrollo',
         email='chrollo@aa.io',
-        password='password'
+        password='password',
+        birthday='Aug 17, 1996',
+        gender='Male'
         )
     kendall = User(
         first_name='Kendall',
         last_name='Jenner',
         username='ken',
         email='kenny@aa.io',
-        password='password'
+        password='password',
+        birthday='Nov 3, 1995',
+        gender='Female'
         )
 
     db.session.add(demo)

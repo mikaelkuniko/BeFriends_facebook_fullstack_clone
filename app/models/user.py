@@ -16,7 +16,9 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(1000), nullable=False)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
-    profile_pic = db.Column(db.String(1000))
+    profile_pic = db.Column(db.String(255))
+    birthday = db.Column(db.String(255), nullable=False)
+    gender = db.Column(db.String(255), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), default=func.now())
@@ -45,7 +47,9 @@ class User(db.Model, UserMixin):
             last_name
             username,
             email,
-            profile_pic
+            profile_pic,
+            birthday,
+            gender
         }
         '''
         return {
@@ -55,6 +59,8 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'profile_pic': self.profile_pic,
+            'birthday': self.birthday,
+            'gender': self.gender,
             'post': [post.to_dict() for post in self.post]
         }
 
@@ -66,6 +72,8 @@ class User(db.Model, UserMixin):
             username,
             email,
             profile_pic,
+            birthday,
+            gender
         }
         '''
         return {
@@ -73,5 +81,6 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             "profile_pic": self.profile_pic,
-
+            'birthday': self.birthday,
+            'gender': self.gender
         }
