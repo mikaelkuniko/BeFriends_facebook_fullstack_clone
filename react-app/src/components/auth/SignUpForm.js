@@ -9,13 +9,30 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [birthDate, setBirthDate] = useState("");
+  const [birthMonth, setBirthMonth] = useState("");
+  const [birthYear, setBirthYear] = useState("");
+  const [gender, setGender] = useState('')
+
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    const payload = {
+      first_name: firstName,
+      last_name: lastName,
+      username,
+      email,
+      password,
+      birthday: `${birthMonth} ${birthDate}, ${birthYear}`,
+      gender
+    }
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, password, firstName, lastName, gender));
       if (data) {
         setErrors(data)
       }
@@ -45,17 +62,19 @@ const SignUpForm = () => {
   return (
     <form onSubmit={onSignUp}>
       <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label>User Name</label>
         <input
           type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
+          onChange={(e)=> setFirstName(e.target.value)}
+          value={firstName}
+          placeholder='First Name'
+          required
+        ></input>
+        <input
+          type='text'
+          onChange={(e)=> setLastName(e.target.value)}
+          value={lastName}
+          placeholder='Last Name'
+          required
         ></input>
       </div>
       <div>
@@ -85,6 +104,23 @@ const SignUpForm = () => {
           value={repeatPassword}
           required={true}
         ></input>
+      </div>
+      <p>Gender</p>
+          <div id="gender" onChange={(e) => setGender(e.target.value)}>
+            <label className="genders">Female
+              <input type="radio" id="female" name="gender" value="female"/>
+            </label>
+            <label className="genders">Male
+              <input type="radio" id="male" name="gender" value="male"/>
+            </label>
+            <label className="genders">Other
+              <input type="radio" id="other" name="gender" value="other"/>
+            </label>
+          </div>
+      <div>
+        {errors.map((error, ind) => (
+          <div key={ind}>{error}</div>
+        ))}
       </div>
       <button type='submit'>Sign Up</button>
     </form>

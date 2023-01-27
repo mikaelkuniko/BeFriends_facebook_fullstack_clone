@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
+import SignupModal from './SignUpButton';
 import './LoginForm.css'
 
 const LoginForm = () => {
@@ -45,7 +46,7 @@ const LoginForm = () => {
   }
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/homepage' />;
   }
 
   return (
@@ -94,7 +95,8 @@ const LoginForm = () => {
         </form>
         <div>
                 {/* make this a modal */}
-              <button onClick={signUp} id='sign-up'>Create new account</button>
+              {/* <button onClick={signUp} id='sign-up'>Create new account</button> */}
+              <SignupModal/>
         </div>
       </div>
     </div>

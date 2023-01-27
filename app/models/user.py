@@ -14,11 +14,11 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(1000), nullable=False)
     last_name = db.Column(db.String(1000), nullable=False)
-    username = db.Column(db.String(40), nullable=False, unique=True)
+    username = db.Column(db.String(40))
     email = db.Column(db.String(255), nullable=False, unique=True)
     profile_pic = db.Column(db.String(255))
-    birthday = db.Column(db.String(255), nullable=False)
-    gender = db.Column(db.String(255), nullable=False)
+    birthday = db.Column(db.String(255))
+    gender = db.Column(db.String(255))
     hashed_password = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), default=func.now())
@@ -49,7 +49,8 @@ class User(db.Model, UserMixin):
             email,
             profile_pic,
             birthday,
-            gender
+            gender,
+            posts
         }
         '''
         return {
@@ -61,7 +62,7 @@ class User(db.Model, UserMixin):
             'profile_pic': self.profile_pic,
             'birthday': self.birthday,
             'gender': self.gender,
-            'post': [post.to_dict() for post in self.post]
+            'posts': [post.to_dict() for post in self.post]
         }
 
     def to_dict_info(self):
