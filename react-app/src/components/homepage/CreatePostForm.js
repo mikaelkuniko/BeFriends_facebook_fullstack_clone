@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import * as postActions from '../../store/post'
 import './PostFormModal.css';
 
@@ -15,9 +16,11 @@ function CreatePostForm({post}) {
             post_text: content,
             // user_id: userId
          };
-         console.log('This is the payload', payload)
+        //  console.log('This is the payload', payload)
 
-        return dispatch(postActions.postCreate(payload));
+        return dispatch(postActions.postCreate(payload))
+            .then(()=>Redirect('/'));
+
     };
 
     return (

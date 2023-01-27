@@ -35,13 +35,16 @@ def user_posts():
 def new_form():
     form = PostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
+    # print('This is form data', form.data)
     if form.validate_on_submit():
         new_post = Post()
         form.populate_obj(new_post)
         new_post.user_id = current_user.id
+        # print("------------this new post-------", new_post)
         db.session.add(new_post)
         db.session.commit()
-        return new_post.to_dict, 201
+        return new_post.to_dict(), 201
 
     if form.errors:
         return {
