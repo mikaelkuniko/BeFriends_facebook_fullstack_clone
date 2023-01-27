@@ -5,6 +5,7 @@ import './index.css'
 import * as sessionActions from '../../store/session'
 import * as postActions from '../../store/post'
 import PostCards from "./PostCards";
+import CreatePostModal from "./CreatePostModal";
 
 function Homepage(){
 
@@ -23,8 +24,11 @@ function Homepage(){
 
     return (
         <div>
-            <div>
-                Create post modal goes here
+            <div className="post-modal">
+                <div>Profile Image</div>
+                <div>
+                <CreatePostModal user={user}/>
+                </div>
             </div>
             <div>
                 {posts.map((post)=> (
