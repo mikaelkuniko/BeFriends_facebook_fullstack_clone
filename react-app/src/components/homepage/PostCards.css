@@ -1,0 +1,10 @@
+.post{
+    display: flex;
+    flex-direction: column;
+}
+
+.user-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

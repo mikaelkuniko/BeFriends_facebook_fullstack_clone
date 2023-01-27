@@ -40,7 +40,7 @@ const deletePost = (PostId) => {
     }
 }
 
-export const PostCreate = (post) => async dispatch => {
+export const postCreate = (post) => async dispatch => {
     const response = await fetch(`/api/posts/new`, {
         method: 'POST',
         headers: {"Content-Type": "application/json"},
@@ -68,7 +68,7 @@ export const userPosts = () => async dispatch => {
 
 export const allPosts = () => async dispatch => {
     const response = await fetch(`/api/posts`)
-
+    console.log("This is in the all posts")
     if(response.ok){
         const posts = await response.json()
         dispatch(loadAllPosts(posts))
