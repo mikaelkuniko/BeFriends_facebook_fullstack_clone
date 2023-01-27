@@ -48,3 +48,36 @@ def new_form():
             "errors": form.errors
         }, 400
 
+# update
+@post_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def update_post_by_id(id):
+    current_post = Post.query.get(id)
+
+    if not current_post:
+        return {'errors': "Post not found"}, 404
+    form = PostForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        form.populate_obj(current_post)
+
+        db.session.add(current_post)
+        db.session.commit()
+        return current_post.to_dict(), 201
+
+    if form.errors:
+        return {
+            "errors": form.errors
+        }, 400
+
+# DELETE
+@post_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_item(id):
+    post = Post.query.get(id)
+    db.session.delete(post)
+    db.session.commit()
+    if not post:
+        return {"errors": "Post not found"}, 404
+    return {"message": "Post deleted"}
