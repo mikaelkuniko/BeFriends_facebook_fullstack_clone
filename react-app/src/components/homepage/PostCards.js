@@ -1,9 +1,21 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { removePost } from '../../store/post'
 import './PostCards.css'
 
+
+
 function PostCards(post){
+    const dispatch = useDispatch()
+    const removePost = async () => {
+        await dispatch(removePost(post.id))
+        alert('Post Deleted')
+    }
+
+
+
+
     useEffect(()=> {})
     // const post = useSelector(state => state.posts)
     // console.log("This is single post", post)

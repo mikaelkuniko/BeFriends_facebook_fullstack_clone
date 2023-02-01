@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import * as postActions from '../../store/post'
 import './PostFormModal.css';
 
@@ -9,6 +9,7 @@ function CreatePostForm({post}) {
     const user = useSelector(state => state.session.user);
     const userId = user.id;
     const [content, setContent] = useState("");
+    const history = useHistory()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -19,7 +20,7 @@ function CreatePostForm({post}) {
         //  console.log('This is the payload', payload)
 
         return dispatch(postActions.postCreate(payload))
-            .then(()=>Redirect('/'));
+            // .then(()=>history.push('/homepage'));
 
     };
 
