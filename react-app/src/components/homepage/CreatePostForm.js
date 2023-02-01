@@ -4,7 +4,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import * as postActions from '../../store/post'
 import './PostFormModal.css';
 
-function CreatePostForm({post}) {
+function CreatePostForm({post, onModalClose}) {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
     const userId = user.id;
@@ -21,6 +21,7 @@ function CreatePostForm({post}) {
 
         return dispatch(postActions.postCreate(payload))
             // .then(()=>history.push('/homepage'));
+            .then(onModalClose())
 
     };
 

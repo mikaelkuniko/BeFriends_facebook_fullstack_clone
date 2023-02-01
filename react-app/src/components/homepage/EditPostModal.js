@@ -11,7 +11,9 @@ function EditPostModal(post) {
       <button onClick={() => setShowModal(true)}>Edit</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditPostForm setShowModal={setShowModal} post={post}/>
+          <EditPostForm setShowModal={setShowModal} post={post}
+          onModalClose={()=>setShowModal(false)}
+          />
         </Modal>
       )}
     </>

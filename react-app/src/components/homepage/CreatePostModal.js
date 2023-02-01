@@ -10,7 +10,10 @@ function CreatePostModal(user) {
       <button onClick={() => setShowModal(true)}>{`What's on your mind, ${user.user.first_name}?`}</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <CreatePostForm setShowModal={setShowModal}/>
+          <CreatePostForm setShowModal={setShowModal}
+          onModalClose={()=>setShowModal(false)}
+          // to close the modal by submitting
+          />
         </Modal>
       )}
     </>
