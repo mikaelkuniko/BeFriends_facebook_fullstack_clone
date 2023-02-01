@@ -33,10 +33,10 @@ const updatePost = (post) => {
     }
 }
 
-const deletePost = (PostId) => {
+const deletePost = (postId) => {
     return {
         type: DELETE,
-        PostId
+        postId
     }
 }
 
