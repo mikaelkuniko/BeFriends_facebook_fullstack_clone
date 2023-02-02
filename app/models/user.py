@@ -66,7 +66,7 @@ class User(db.Model, UserMixin):
             'birthday': self.birthday,
             'gender': self.gender,
             'posts': [post.to_dict() for post in self.post],
-            'comments': [comment.to_dict() for comment in self.comment]
+            # 'comments': [comment.to_dict() for comment in self.comment]
         }
 
     def to_dict_info(self):
