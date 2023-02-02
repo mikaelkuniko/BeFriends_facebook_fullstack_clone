@@ -1,6 +1,5 @@
 from app.models import db, environment, SCHEMA, Comment
 
-# Adds a demo user, you can add other users here if you want
 def seed_comments():
     demo = Comment(
         user_id = 1,

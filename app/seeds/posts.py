@@ -1,6 +1,6 @@
 from app.models import db, environment, SCHEMA, Post
 
-# Adds a demo user, you can add other users here if you want
+
 def seed_posts():
     demo = Post(
         user_id = 1,
