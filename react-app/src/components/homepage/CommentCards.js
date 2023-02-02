@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { allComments } from "../../store/comment";
+import { allComments, removeComment } from "../../store/comment";
 
 function CommentCards(comment){
     const dispatch = useDispatch()
@@ -9,7 +9,15 @@ function CommentCards(comment){
         dispatch(allComments)
     }, [dispatch])
 
-    console.log('This is comment', comment)
+    // console.log('This is comment', comment)
+
+    const currentUserId = useSelector((state) => state.session.user.id)
+
+    const deleteComment = async () => {
+        await dispatch(removeComment(comment.id))
+        alert('Comment Deleted')
+    }
+
 
     if (!comment) return null
     return (
@@ -20,7 +28,13 @@ function CommentCards(comment){
                 <p>{comment.comment_text}</p>
             </div>
             <div>Edit</div>
-            <div>Delete</div>
+            <div>
+                {currentUserId == comment.user.id && (
+                        <button onClick={deleteComment}>
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    )}
+                    </div>
         </div>
     )
 }
