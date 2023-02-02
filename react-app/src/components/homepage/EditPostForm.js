@@ -4,19 +4,20 @@ import { Redirect, useHistory, useParams } from "react-router-dom";
 import * as postActions from '../../store/post'
 import './PostFormModal.css';
 
-function EditPostForm(post) {
+function EditPostForm({post, onModalClose}) {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
-    console.log("this is user", user)
+    // console.log("this is user", user)
     // const session = useSelector(state => state)
     // console.log('this is session', session)
     const userId = user.id;
-    const [content, setContent] = useState(post.post.post.post);
+    const [content, setContent] = useState(post.post.post);
     const history = useHistory()
+    // console.log('this is post', post.post.post)
 
-    console.log("This is post in the post form", post.post.post)
-    const postId = post.post.post.id
-    // console.log('This post', postId)
+    // console.log("This is post in the post form", post.post.post)
+    const postId = post.post.id
+    // console.log('This postId', postId)
 
     // console.log('---------------this is post content----------------', post)
 
@@ -29,7 +30,7 @@ function EditPostForm(post) {
         //  console.log('This is the payload', payload)
 
         return dispatch(postActions.postUpdate(postId, payload))
-            // .then(()=>history.push('/homepage'));
+                .then(onModalClose())
 
     };
 
@@ -41,6 +42,9 @@ function EditPostForm(post) {
         </div>
         <textarea
         name="new-post"
+        rows={8}
+        cols={64}
+        className='fixed-form-input'
         placeholder={`What's on your mind, ${user.first_name}?`}
         id="text-area"
         value={content}

@@ -5,6 +5,7 @@ import { removePost, allPosts } from '../../store/post'
 import { allComments } from '../../store/comment'
 import EditPostModal from './EditPostModal'
 import './PostCards.css'
+import CommentCards from './CommentCards'
 
 
 
@@ -64,7 +65,19 @@ function PostCards(post) {
                 <p>{post.post}</p>
             </div>
             <div className='comments-likes'>
-                Comments and likes go here
+                <div className='comments-bar'>
+                    <div>
+                        Comment
+                    </div>
+                    <div>
+                        Like
+                    </div>
+                </div>
+                <div>
+                    {postComments.map((comment)=> (
+                        <CommentCards key={comment.id} {...comment}/>
+                    ))}
+                </div>
             </div>
         </div>
     )
