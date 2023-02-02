@@ -27,6 +27,8 @@ class User(db.Model, UserMixin):
     # One to many: User has many posts through owner_id
     post = db.relationship('Post', back_populates='user', cascade='all, delete-orphan')
 
+    comment = db.relationship('Comment', back_populates='user', cascade='all, delete-orphan')
+
     @property
     def password(self):
         return self.hashed_password
@@ -50,7 +52,8 @@ class User(db.Model, UserMixin):
             profile_pic,
             birthday,
             gender,
-            posts
+            posts,
+            comments
         }
         '''
         return {
@@ -62,7 +65,8 @@ class User(db.Model, UserMixin):
             'profile_pic': self.profile_pic,
             'birthday': self.birthday,
             'gender': self.gender,
-            'posts': [post.to_dict() for post in self.post]
+            'posts': [post.to_dict() for post in self.post],
+            'comments': [comment.to_dict() for comment in self.comment]
         }
 
     def to_dict_info(self):
@@ -79,8 +83,6 @@ class User(db.Model, UserMixin):
         '''
         return {
             'id': self.id,
-            'first_name': self.first_name,
-            'last_name': self.last_name,
             'username': self.username,
             'email': self.email,
             "profile_pic": self.profile_pic,

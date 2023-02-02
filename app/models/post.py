@@ -16,6 +16,8 @@ class Post(db.Model):
 
     user = db.relationship('User', back_populates='post')
 
+    comment = db.relationship('Comment', back_populates='post', cascade='all, delete-orphan')
+
     def to_dict(self):
         """
         Returns a dict representing Posts
@@ -23,6 +25,7 @@ class Post(db.Model):
             id,
             user,
             post,
+            comments,
             created_at,
             updated_at,
         }
@@ -31,6 +34,7 @@ class Post(db.Model):
             "id": self.id,
             "user": self.user.to_dict_info(),
             "post": self.post_text,
+            'comments': [comment.to_dict() for comment in self.comment],
             "created_at": self.created_at,
             "updated_at": self.updated_at
         }
