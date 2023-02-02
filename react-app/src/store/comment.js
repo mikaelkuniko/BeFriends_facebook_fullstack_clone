@@ -42,7 +42,7 @@ const deleteComment = (commentId) => {
 
 export const commentCreate = (comment) => async dispatch => {
     const response = await fetch(`/api/comments/new`, {
-        method: 'comment',
+        method: 'POST',
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(comment)
       })

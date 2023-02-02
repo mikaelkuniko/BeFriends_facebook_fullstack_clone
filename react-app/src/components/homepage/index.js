@@ -23,7 +23,7 @@ function Homepage(){
     if (posts.length === 0) return null;
 
     return (
-        <div>
+        <div className="posts-div">
             <div className="post-modal">
                 <div>Profile Image</div>
                 <div>

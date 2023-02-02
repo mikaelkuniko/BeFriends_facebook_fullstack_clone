@@ -6,6 +6,7 @@ import { allComments } from '../../store/comment'
 import EditPostModal from './EditPostModal'
 import './PostCards.css'
 import CommentCards from './CommentCards'
+import CreateCommentForm from './CreateCommentForm'
 
 
 
@@ -72,6 +73,9 @@ function PostCards(post) {
                     <div>
                         Like
                     </div>
+                </div>
+                <div>
+                    <CreateCommentForm post={post}/>
                 </div>
                 <div>
                     {postComments.map((comment)=> (

@@ -42,7 +42,7 @@ def new_form():
         form.populate_obj(new_comment)
         new_comment.user_id = current_user.id
         # need to post in current post id
-        # print("------------this new comment-------", new_comment)
+        print("------------this new comment-------", new_comment)
         db.session.add(new_comment)
         db.session.commit()
         return new_comment.to_dict(), 201

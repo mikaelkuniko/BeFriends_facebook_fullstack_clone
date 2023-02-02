@@ -1,10 +1,22 @@
 .post{
     display: flex;
     flex-direction: column;
+
+    /* background-color: #242526;
+    color: white */
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: 0 1px 1px 1px rgba(202, 201, 201, 0.632);
+    padding: 20px;
+    width: 600px;
+    margin: auto;
+    margin-bottom: 10px;
 }
 
 .user-bar{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    /* background-color: #242526; */
+    background-color: #fff;
 }
