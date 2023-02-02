@@ -52,7 +52,7 @@ function PostCards(post) {
             <div className='post-content'>
                 <p>{post.post}</p>
             </div>
-            <div className='comments-likes'>
+            <div className='comments-likes' style={{wordWrap: 'break-word'}}>
                 Comments and likes go here
             </div>
         </div>

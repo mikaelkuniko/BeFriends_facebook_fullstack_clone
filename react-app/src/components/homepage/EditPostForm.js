@@ -42,6 +42,9 @@ function EditPostForm({post, onModalClose}) {
         </div>
         <textarea
         name="new-post"
+        rows={8}
+        cols={64}
+        className='fixed-form-input'
         placeholder={`What's on your mind, ${user.first_name}?`}
         id="text-area"
         value={content}

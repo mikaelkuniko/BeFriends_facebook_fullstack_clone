@@ -36,6 +36,9 @@ function CreatePostForm({post, onModalClose}) {
         placeholder={`What's on your mind, ${user.first_name}?`}
         id="text-area"
         value={content}
+        rows={8}
+        cols={64}
+        className='fixed-form-input'
         onChange={e => setContent(e.target.value)} />
         <button type="submit" id="post-button">Post</button>
         </form>
