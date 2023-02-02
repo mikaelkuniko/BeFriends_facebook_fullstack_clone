@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { allComments, removeComment } from "../../store/comment";
+import EditCommentModal from "./EditCommentModal";
 
 function CommentCards(comment){
     const dispatch = useDispatch()
@@ -9,7 +10,7 @@ function CommentCards(comment){
         dispatch(allComments)
     }, [dispatch])
 
-    // console.log('This is comment', comment)
+    console.log('This is comment', comment)
 
     const currentUserId = useSelector((state) => state.session.user.id)
 
@@ -27,7 +28,11 @@ function CommentCards(comment){
                 <p>{comment.user.first_name} {comment.user.last_name}</p>
                 <p>{comment.comment_text}</p>
             </div>
-            <div>Edit</div>
+            <div>
+            {currentUserId == comment.user.id && (
+                    <EditCommentModal comment={comment}/>
+                    )}
+            </div>
             <div>
                 {currentUserId == comment.user.id && (
                         <button onClick={deleteComment}>
