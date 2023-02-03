@@ -18,7 +18,7 @@ function CreateCommentForm({ post }) {
             post_id: post.id
             // user_id: userId
         };
-        console.log("This is the comment payload", payload)
+        // console.log("This is the comment payload", payload)
         //  console.log('This is the payload', payload)
 
         return dispatch(commentActions.commentCreate(payload))
@@ -39,7 +39,7 @@ function CreateCommentForm({ post }) {
                         placeholder="Write a comment..."
                         onChange={e => setContent(e.target.value)}
                     />
-                    <button type="submit" id="comment-button">Comment</button>
+                    <button type="submit" id="comment-button"><i class="fa-regular fa-comment"></i></button>
                 </form>
             </div>
         </div>

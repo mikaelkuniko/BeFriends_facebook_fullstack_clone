@@ -26,12 +26,13 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+
       <Switch>
         {/* <Route path='/login' exact={true}>
           <LoginForm />
         </Route> */}
         <Route path='/homepage'>
+          <NavBar />
           <Homepage/>
         </Route>
         {/* <Route path='/sign-up' exact={true}>

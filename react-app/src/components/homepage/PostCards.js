@@ -43,9 +43,13 @@ function PostCards(post) {
         <div className='post'>
             <div className='user-bar'>
                 <div className='user'>
-                    <p>
+                    {!post.user.profile_pic && (
+                        // <img src='../../../public/default_profile/default_user' />
+                        <i class="fa-regular fa-user"></i>
+                    )}
+                    <h4 id='user-name'>
                         {post.user.first_name} {post.user.last_name}
-                    </p>
+                    </h4>
                 </div>
                 <div>
                     <div>{currentUser == post.user.id && (
@@ -66,12 +70,12 @@ function PostCards(post) {
                 <p>{post.post}</p>
             </div>
             <div className='comments-likes'>
-                <div className='comments-bar'>
+                <div className='cl-bar'>
                     <div>
-                        Comment
+                    <i class="fa-regular fa-thumbs-up"></i> Like
                     </div>
                     <div>
-                        Like
+                    <i class="fa-regular fa-comment"></i> Comment
                     </div>
                 </div>
                 <div>

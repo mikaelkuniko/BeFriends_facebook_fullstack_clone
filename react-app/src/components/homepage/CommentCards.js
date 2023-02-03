@@ -23,8 +23,8 @@ function CommentCards(comment){
     if (!comment) return null
     return (
         <div className='comment-card'>
-            <p>prof img</p>
             <div className="comment">
+                <p>prof img</p>
                 <p>{comment.user.first_name} {comment.user.last_name}</p>
                 <p>{comment.comment_text}</p>
             </div>

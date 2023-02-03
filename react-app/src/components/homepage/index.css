@@ -10,7 +10,8 @@ border-radius: 7px;
 box-shadow: 0 1px 1px 1px rgba(202, 201, 201, 0.632);
 height: 100px;
 justify-content: center;
-width: 600px;
+width: 555px;
+padding: 20px;
 margin: auto;
 }
 
@@ -18,6 +19,13 @@ margin: auto;
 margin: auto;
 }
 
-/* body{
-    background-color: black;
-} */
+body{
+   background-color: #f7f7f7
+   /* background-color: #dfe1ee; */
+}
+
+.post-profile-pic{
+    font-size: 24px;
+    /* margin-left: -30px; */
+    margin-right: 20px;
+}
