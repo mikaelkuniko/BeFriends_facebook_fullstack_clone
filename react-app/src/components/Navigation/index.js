@@ -1,9 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import ProfileButton from './ProfileButton';
 import './index.css'
 
 const Navigation = () => {
+    const user = useSelector((state)=>state.session.user)
+    console.log("This is user", user)
 
 
     return (
@@ -16,7 +19,7 @@ const Navigation = () => {
             </div>
             {/* <div className='mid-nav'>links?</div> */}
             <div className='right-nav'>
-                Profile Button
+                <ProfileButton user={user}/>
             </div>
         </div>
     )
