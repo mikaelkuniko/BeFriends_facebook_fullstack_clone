@@ -14,6 +14,7 @@ function CommentCards(comment){
     // console.log('This is comment', comment)
 
     const currentUserId = useSelector((state) => state.session.user.id)
+    const user = useSelector((state)=>state.session.user)
 
     const deleteComment = async () => {
         await dispatch(removeComment(comment.id))
@@ -25,7 +26,9 @@ function CommentCards(comment){
     return (
         <div className='comment-card'>
             <div className="comment">
-                <p>prof img</p>
+                {!user.profile_pic && (
+                    <i class="fa-regular fa-user"></i>
+                )}
                 <p>{comment.user.first_name} {comment.user.last_name}</p>
                 <p>{comment.comment_text}</p>
             </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import * as commentActions from '../../store/comment'
+import './CreateCommentForm.css'
 
 function CreateCommentForm({ post }) {
     const dispatch = useDispatch();
@@ -27,9 +28,11 @@ function CreateCommentForm({ post }) {
     };
 
     return (
-        <div>
+        <div className="create-comment-div">
             <div>
-                <p> profile image</p>
+               {!user.profile_pic && (
+                <i class="fa-regular fa-user"></i>
+               )}
             </div>
             <div>
                 <form onSubmit={handleSubmit} className="create-comment">
@@ -38,8 +41,9 @@ function CreateCommentForm({ post }) {
                         value={content}
                         placeholder="Write a comment..."
                         onChange={e => setContent(e.target.value)}
+                        className='input'
                     />
-                    <button type="submit" id="comment-button"><i class="fa-regular fa-comment"></i></button>
+                    <button type="submit" id="comment-button"><i class="fa-regular fa-comment" id='comment'></i></button>
                 </form>
             </div>
         </div>

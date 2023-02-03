@@ -1,0 +1,28 @@
+.create-comment-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 95%;
+    height: fit-content;
+    margin-top: 15px;
+}
+
+.user{
+    margin-right: 10px;
+}
+
+.create-comment{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.input{
+    padding-left: 10px;
+    height: 37px;
+    width: 444px;
+    border: none;
+    border-radius: 25px;
+    background-color: #f7f7f7;
+    color: #616060;
+    outline: none;
+}
