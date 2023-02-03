@@ -1,0 +1,11 @@
+.edit-button{
+    height: 21.5px;
+    width: 37px;
+    border: none;
+    margin-right: 5px;
+}
+
+.edit-button:hover{
+    cursor: pointer;
+    background-color: rgb(234, 233, 233);
+}

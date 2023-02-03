@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { allComments, removeComment } from "../../store/comment";
 import EditCommentModal from "./EditCommentModal";
+import './CommentCards.css'
 
 function CommentCards(comment){
     const dispatch = useDispatch()
@@ -10,7 +11,7 @@ function CommentCards(comment){
         dispatch(allComments)
     }, [dispatch])
 
-    console.log('This is comment', comment)
+    // console.log('This is comment', comment)
 
     const currentUserId = useSelector((state) => state.session.user.id)
 

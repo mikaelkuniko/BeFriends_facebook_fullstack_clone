@@ -51,14 +51,14 @@ function PostCards(post) {
                         {post.user.first_name} {post.user.last_name}
                     </h4>
                 </div>
-                <div>
+                <div className='edit-delete'>
                     <div>{currentUser == post.user.id && (
-                    <EditPostModal post={post}/>
+                    <EditPostModal post={post} className='edit-delete-buttons'/>
                     )}
                     </div>
 
                     {currentUser == post.user.id && (
-                        <button onClick={deletePost}>
+                        <button onClick={deletePost} className='edit-delete-buttons'>
                             <i class="fa-solid fa-trash"></i>
                         </button>
                     )}
@@ -71,8 +71,8 @@ function PostCards(post) {
             </div>
             <div className='comments-likes'>
                 <div className='cl-bar'>
-                    <div>
-                    <i class="fa-regular fa-thumbs-up"></i> Like
+                    <div onClick={()=>{alert('Coming soon!')}} id='likes-div'>
+                    <i class="fa-regular fa-thumbs-up" ></i> Like
                     </div>
                     <div>
                     <i class="fa-regular fa-comment"></i> Comment

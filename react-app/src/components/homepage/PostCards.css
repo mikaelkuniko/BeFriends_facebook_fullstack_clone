@@ -45,3 +45,23 @@
 .fa-user{
     font-size: 20px;
 }
+
+.edit-delete{
+    display: flex;
+    flex-direction: row;
+}
+
+.edit-delete-buttons{
+    height: 21.5px;
+    width: 37px;
+    border: none;
+}
+
+.edit-delete-buttons:hover{
+    cursor: pointer;
+    background-color: rgb(234, 233, 233);
+}
+
+.likes-div:hover{
+    cursor: pointer;
+}
