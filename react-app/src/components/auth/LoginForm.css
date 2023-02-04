@@ -15,7 +15,7 @@ body {
     display: flex;
     align-content: center;
     justify-content: space-around;
-    padding: 132px 0px 132px;
+    padding: 177px 0px 177px;
 
 }
 
@@ -72,5 +72,5 @@ body {
 }
 
 #my-link{
-    margin-left: 100px;
+    margin-left: 125px;
 }
