@@ -73,4 +73,15 @@ body {
 
 #my-link{
     margin-left: 125px;
+    text-decoration: none;
+    color: #2374E1
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    cursor: pointer;
+    text-decoration: underline;
 }
