@@ -14,7 +14,7 @@ function Homepage(){
     const posts = Object.values(allPosts).reverse()
     const user = useSelector(state=>state.session.user)
     // console.log("This is state", state)
-    console.log("this is user", user)
+    // console.log("this is user", user)
 
     useEffect(()=> {
         dispatch(postActions.allPosts())

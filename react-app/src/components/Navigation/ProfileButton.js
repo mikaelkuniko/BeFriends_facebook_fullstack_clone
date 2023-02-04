@@ -32,7 +32,7 @@ function ProfileButton({ user }) {
         setShowMenu(false)
         history.push("/");
     };
-
+    if(!user) return null
     return (
         <>
             <button onClick={openMenu} className="nav-icon" id="profile-icon">

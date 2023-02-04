@@ -3,6 +3,7 @@ import { Modal } from '../../context/Modal';
 import CreatePostForm from './CreatePostForm';
 import './CreatePostModal.css'
 
+
 function CreatePostModal(user) {
   const [showModal, setShowModal] = useState(false);
   console.log('Users', user.user)
