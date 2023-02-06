@@ -6,7 +6,7 @@ import './CreatePostModal.css'
 
 function CreatePostModal(user) {
   const [showModal, setShowModal] = useState(false);
-  console.log('Users', user.user)
+  // console.log('Users', user.user)
   return (
     <>
       <button id='create-post-button' onClick={() => setShowModal(true)}>{`What's on your mind, ${user.user.first_name}?`}</button>
