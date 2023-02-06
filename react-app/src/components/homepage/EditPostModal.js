@@ -5,7 +5,7 @@ import './EditPostModal.css'
 
 function EditPostModal(post) {
   const [showModal, setShowModal] = useState(false);
-  console.log('Posts', post)
+  // console.log('Posts', post)
 //   console.log('Post', post)
   return (
     <>

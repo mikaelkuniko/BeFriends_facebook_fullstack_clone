@@ -25,7 +25,7 @@ function PostCards(post) {
     // console.log("This is comments by time", comments)
     const postComments = comments.filter((comment) => Number(post.id) === Number(comment.post.id))
     // console.log("This is the post's comments", postComments)
-    console.log("This is single post", post)
+    // console.log("This is single post", post)
 
 
     useEffect(() => {

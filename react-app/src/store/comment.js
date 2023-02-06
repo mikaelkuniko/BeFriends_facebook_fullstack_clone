@@ -69,7 +69,7 @@ export const userComments = () => async dispatch => {
 
 export const allComments = () => async dispatch => {
     const response = await fetch(`/api/comments`)
-    console.log("This is in the all comments")
+    // console.log("This is in the all comments")
     if(response.ok){
         const comments = await response.json()
         dispatch(loadAllComments(comments))
