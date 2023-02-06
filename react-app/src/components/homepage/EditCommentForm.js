@@ -19,7 +19,8 @@ function EditCommentForm({comment, onModalClose}) {
 
     useEffect(() => {
         const errors = []
-        if (content.length === 0) errors.push("Post must contain at least one character.")
+        if (content.length === 0) errors.push("Comment must contain at least one character.")
+        if (content.length > 2000) errors.push("Comment must have less than 2000 characters.")
 
         setErrors(errors)
     }, [content])

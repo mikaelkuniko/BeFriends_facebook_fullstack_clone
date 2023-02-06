@@ -52,6 +52,7 @@ function CreateCommentForm({ post }) {
                         type="text"
                         value={content}
                         placeholder="Write a comment..."
+                        maxLength='2000'
                         onChange={e => setContent(e.target.value)}
                         className='input'
                     />

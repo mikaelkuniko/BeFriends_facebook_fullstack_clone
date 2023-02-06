@@ -40,7 +40,7 @@ function CommentCards(comment) {
                 </div>
                 <div>
                     {currentUserId == comment.user.id && (
-                        <button onClick={deleteComment}>
+                        <button onClick={deleteComment} id='delete-comment'>
                             <i class="fa-solid fa-trash"></i>
                         </button>
                     )}
