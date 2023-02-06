@@ -71,6 +71,11 @@ body {
     margin-bottom: 7px;
 }
 
+#log-in-button:hover{
+    cursor: pointer;
+    background-color: #1e6cd2;
+}
+
 #my-link{
     margin-left: 125px;
     text-decoration: none;

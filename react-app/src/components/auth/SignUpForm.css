@@ -77,3 +77,8 @@
     height: 38px;
     margin-left: 25%;
 }
+
+#sign-up-button:hover{
+    cursor:pointer;
+    background-color: #3b9928;
+}
