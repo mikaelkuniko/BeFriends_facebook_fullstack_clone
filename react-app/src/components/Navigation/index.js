@@ -6,7 +6,7 @@ import './index.css'
 
 const Navigation = () => {
     const user = useSelector((state)=>state.session.user)
-    console.log("This is user", user)
+    // console.log("This is user", user)
 
 
     return (
