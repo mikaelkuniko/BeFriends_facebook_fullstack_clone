@@ -34,6 +34,21 @@ Users are able to post their thoughts and opinions and share this with other use
 
 Users can comment on other users' posts. They are able to create their own comment, update them, or delete them. They are also able to view all the comments on a post.
 
+# Site preview
+
+## Homepage and sign-up modal
+
+<img width="1133" alt="Screen Shot 2023-02-05 at 10 58 04 PM" src="https://user-images.githubusercontent.com/109828290/216906105-0b84c8f0-85bd-46cd-af38-1d639ac88232.png">
+
+<img width="483" alt="Screen Shot 2023-02-05 at 10 58 14 PM" src="https://user-images.githubusercontent.com/109828290/216906138-dc869093-7f30-499a-9c3c-24dbf0f50ffe.png">
+
+## Homefeed and create post modal
+
+<img width="1137" alt="Screen Shot 2023-02-05 at 10 57 31 PM" src="https://user-images.githubusercontent.com/109828290/216906209-c1ed16c2-a75d-4a6a-b1a3-89259818d69a.png">
+
+<img width="494" alt="Screen Shot 2023-02-05 at 10 57 42 PM" src="https://user-images.githubusercontent.com/109828290/216906220-c1eeedfb-f02d-44e4-9a99-d05460521ed9.png">
+
+
 # Feature directions
 
 ## Homepage Demo User:
