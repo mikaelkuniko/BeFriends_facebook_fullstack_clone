@@ -6,15 +6,13 @@ BeFriends is a web application inspired by Facebook that provides an online comm
 
 ### Please see below links to project Wiki:
 
-[User Stories](https://github.com/mikaelkuniko/BeFriends_facebook_fullstack_clone/wiki/User-Stories)
+* [User Stories](https://github.com/mikaelkuniko/BeFriends_facebook_fullstack_clone/wiki/User-Stories)
 
-[Feature List](https://github.com/mikaelkuniko/BeFriends_facebook_fullstack_clone/wiki/Features-List)
+* [Feature List](https://github.com/mikaelkuniko/BeFriends_facebook_fullstack_clone/wiki/Features-List)
 
-[Database Schema](https://github.com/mikaelkuniko/BeFriends_facebook_fullstack_clone/wiki/Database-schema)
+* [Database Schema](https://github.com/mikaelkuniko/BeFriends_facebook_fullstack_clone/wiki/Database-schema)
 
-[Wireframes](https://github.com/mikaelkuniko/BeFriends_facebook_fullstack_clone/wiki/Wireframe)
-
-Pseudocode used to visualize Redux Store Shape.
+* [Wireframes](https://github.com/mikaelkuniko/BeFriends_facebook_fullstack_clone/wiki/Wireframe)
 
 ### This project is built with:
 - Python
