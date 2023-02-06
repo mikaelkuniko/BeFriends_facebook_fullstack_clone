@@ -55,6 +55,7 @@ function CreateCommentForm({ post }) {
                         maxLength='2000'
                         onChange={e => setContent(e.target.value)}
                         className='input'
+                        required
                     />
                     <button type="submit" id="comment-button" disabled={!!errors.length}><i class="fa-regular fa-comment" id='comment'></i></button>
                 </form>

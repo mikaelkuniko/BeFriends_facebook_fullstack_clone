@@ -58,6 +58,7 @@ function CreatePostForm({ post, onModalClose }) {
                 value={content}
                 rows={7}
                 cols={55}
+                required
                 className='fixed-form-input'
                 onChange={e => setContent(e.target.value)} />
             {!!errors.length && (

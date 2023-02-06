@@ -68,6 +68,7 @@ function EditPostForm({ post, onModalClose }) {
                 className='fixed-form-input'
                 placeholder={`What's on your mind, ${user.first_name}?`}
                 id="text-area"
+                required
                 value={content}
                 onChange={e => setContent(e.target.value)} />
                 {!!errors.length && (

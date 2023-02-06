@@ -63,6 +63,7 @@ function EditCommentForm({comment, onModalClose}) {
         className='fixed-form-input'
         placeholder='Edit your comment...'
         id="text-area"
+        required
         value={content}
         onChange={e => setContent(e.target.value)} />
         {!!errors.length && (
