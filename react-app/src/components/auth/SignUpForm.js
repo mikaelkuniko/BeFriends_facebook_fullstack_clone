@@ -32,6 +32,9 @@ const SignUpForm = () => {
       birthday: `${birthMonth} ${birthDate}, ${birthYear}`,
       gender
     }
+    if(password !== repeatPassword){
+      alert("Confirmation password must match password.")
+    }
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password, firstName, lastName, gender));
       if (data) {
