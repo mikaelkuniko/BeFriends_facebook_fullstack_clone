@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -18,6 +18,7 @@ const SignUpForm = () => {
   const [birthYear, setBirthYear] = useState("");
   const [gender, setGender] = useState('')
 
+
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
@@ -31,6 +32,9 @@ const SignUpForm = () => {
       password,
       birthday: `${birthMonth} ${birthDate}, ${birthYear}`,
       gender
+    }
+    if (password !== repeatPassword) {
+      alert("Password confirmation must match password.")
     }
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password, firstName, lastName, gender));
@@ -129,11 +133,21 @@ const SignUpForm = () => {
             <input type="radio" id="other" name="gender" value="other" />
           </label>
         </div>
-        <div>
+        {/* <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
-        </div>
+        </div> */}
+         {!!errors.length && (
+                <div className="create-post-errors">
+                    The following errors were found:
+                    <ul className='errors'>
+                        {errors.map((error) => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         <button id='sign-up-button' type='submit'>Sign Up</button>
       </form>
     </div>
