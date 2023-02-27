@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
-from join_tables import post_likes
+from join_tables import post_likes, comment_likes
 
 
 class User(db.Model, UserMixin):
@@ -35,6 +35,10 @@ class User(db.Model, UserMixin):
                                 secondary=post_likes,
                                 back_populates='post_user_likes')
 
+    user_comment_likes = db.relationship("Comment",
+                                secondary=comment_likes,
+                                back_populates='comment_user_likes')
+
     @property
     def password(self):
         return self.hashed_password
@@ -59,7 +63,8 @@ class User(db.Model, UserMixin):
             birthday,
             gender,
             posts,
-            comments
+            comments,
+            user_post_likes
         }
         '''
         return {
@@ -72,7 +77,7 @@ class User(db.Model, UserMixin):
             'birthday': self.birthday,
             'gender': self.gender,
             'posts': [post.to_dict() for post in self.post],
-            # 'comments': [comment.to_dict() for comment in self.comment]
+            # 'comments': [comment.to_dict() for comment in self.comment],
         }
 
     def to_dict_info(self):
