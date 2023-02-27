@@ -1,6 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
+from join_tables import post_likes
 
 class Post(db.Model):
     __tablename__ = 'posts'
@@ -14,9 +15,15 @@ class Post(db.Model):
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), default=func.now())
 
+    # One to many
     user = db.relationship('User', back_populates='post')
 
     comment = db.relationship('Comment', back_populates='post', cascade='all, delete-orphan')
+
+    # Many to many: Post has many users likes through like post_likes
+    post_user_likes = db.relationship("User",
+                                secondary=post_likes,
+                                back_populates='user_post_likes')
 
     def to_dict(self):
         """
