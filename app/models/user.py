@@ -29,6 +29,8 @@ class User(db.Model, UserMixin):
 
     comment = db.relationship('Comment', back_populates='user', cascade='all, delete-orphan')
 
+    # Many to many: User has many liked posts
+
     @property
     def password(self):
         return self.hashed_password
