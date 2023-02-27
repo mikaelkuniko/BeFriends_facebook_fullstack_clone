@@ -23,4 +23,4 @@ comment_likes = db.table(
 
 if environment == "production":
     post_likes.schema = SCHEMA
-    comments_likes.schema = SCHEMA
+    comment_likes.schema = SCHEMA

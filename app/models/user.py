@@ -64,7 +64,8 @@ class User(db.Model, UserMixin):
             gender,
             posts,
             comments,
-            user_post_likes
+            user_post_likes,
+            user_comment_likes
         }
         '''
         return {
@@ -78,6 +79,7 @@ class User(db.Model, UserMixin):
             'gender': self.gender,
             'posts': [post.to_dict() for post in self.post],
             # 'comments': [comment.to_dict() for comment in self.comment],
+
         }
 
     def to_dict_info(self):

@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Post
 from sqlalchemy import or_
-from ..models import db, Post
+from ..models import db, Post, User
 from ..forms import PostForm
 
 post_routes = Blueprint('post', __name__)
@@ -84,3 +84,37 @@ def delete_item(id):
     if not post:
         return {"errors": "Post not found"}, 404
     return {"message": "Post deleted"}
+
+# CREATE like
+@post_routes.route('/<int:id>/like', methods=['POST'])
+@login_required
+def add_post_like(id):
+    current = current_user.to_dict()
+    user = User.query.get(current['id'])
+    post = Post.query.get(id)
+
+    user.user_post_likes.append(post)
+    db.session.add(user)
+    db.session.commit()
+
+    return {"message": "Post added"}, 200
+
+# DELETE like
+@post_routes.route('/<int:id>/like', methods=['DELETE'])
+@login_required
+def delete_post_like(id):
+    current = current_user.to_dict()
+    user = User.query.get(current['id'])
+
+    if len(user.user_post_likes):
+        for i in range(len(user.user_post_likes)):
+            if user.user_post_likes[i].id == id:
+                user.user_post_likes.pop(i)
+
+                db.session.add(user)
+                db.session.commit()
+
+                return {'message': 'deleted liked post'}
+
+    # print(user.user_post_likes[0])
+    return {"errors": "Post not found"}, 404
