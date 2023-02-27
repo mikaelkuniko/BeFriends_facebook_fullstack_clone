@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Comment
 from sqlalchemy import or_
-from ..models import db, Comment
+from ..models import db, Comment, User
 from ..forms import CommentForm
 
 comment_routes = Blueprint('comment', __name__)
@@ -86,3 +86,36 @@ def delete_item(id):
         return {"errors": "comment not found"}, 404
     return {"message": "comment deleted"}
 
+# CREATE like
+@comment_routes.route('/<int:id>/like', methods=['POST'])
+@login_required
+def add_post_like(id):
+    current = current_user.to_dict()
+    user = User.query.get(current['id'])
+    comment = Comment.query.get(id)
+
+    user.user_post_likes.append(comment)
+    db.session.add(user)
+    db.session.commit()
+
+    return {"message": "Post added"}, 200
+
+# DELETE like
+@comment_routes.route('/<int:id>/like', methods=['DELETE'])
+@login_required
+def delete_post_like(id):
+    current = current_user.to_dict()
+    user = User.query.get(current['id'])
+
+    if len(user.user_comment_likes):
+        for i in range(len(user.user_comment_likes)):
+            if user.user_comment_likes[i].id == id:
+                user.user_comment_likes.pop(i)
+
+                db.session.add(user)
+                db.session.commit()
+
+                return {'message': 'deleted liked comment'}
+
+    # print(user.user_post_likes[0])
+    return {"errors": "Comment not found"}, 404
