@@ -13,6 +13,8 @@ function CommentCards(comment) {
 
     // console.log('This is comment', comment)
 
+    console.log("This is comment obj check for likes", comment)
+
     const currentUserId = useSelector((state) => state.session.user.id)
     const user = useSelector((state) => state.session.user)
 

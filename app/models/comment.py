@@ -37,6 +37,7 @@ class Comment(db.Model):
             post,
             created_at,
             updated_at,
+            comment_user_likes
         }
         """
         return {
@@ -45,5 +46,6 @@ class Comment(db.Model):
             "post": self.post.to_dict(),
             "comment_text": self.comment_text,
             "created_at": self.created_at,
-            "updated_at": self.updated_at
+            "updated_at": self.updated_at,
+            "comment_user_likes": len(self.comment_user_likes)
         }
