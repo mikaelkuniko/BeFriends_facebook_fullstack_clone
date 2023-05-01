@@ -11,7 +11,7 @@ function CreateCommentForm({ post }) {
     const [content, setContent] = useState("");
     const [errors, setErrors] = useState([])
     // const history = useHistory()
-    console.log('This is current post', post)
+    // console.log('This is current post', post)
 
     useEffect(() => {
         const errors = []

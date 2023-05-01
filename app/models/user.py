@@ -63,9 +63,7 @@ class User(db.Model, UserMixin):
             birthday,
             gender,
             posts,
-            comments,
-            user_post_likes,
-            user_comment_likes
+            comments
         }
         '''
         return {
