@@ -8,11 +8,11 @@ def seed_join_tables():
     comments = Comment.query.all()
 
     def randomPost():
-        return posts[random.randint(0, len(posts)-1)]
+        return posts[random.randint(0, len(posts)-3)]
     def randomUser():
         return users[random.randint(0, len(users)-1)]
     def randomComment():
-        return comments[random.randint(0, len(comments)-1)]
+        return comments[random.randint(0, len(comments)-4)]
 
     # adds a like for each post and comment by a random user
     for user in users:
