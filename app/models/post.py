@@ -47,7 +47,7 @@ class Post(db.Model):
             # 'comments': [comment.to_dict() for comment in self.comment],
             "created_at": self.created_at,
             "updated_at": self.updated_at,
-            "post_user_like": len(self.post_user_likes)
+            # "post_user_like": len(self.post_user_likes)
         }
 
     def to_dict_no_user(self):
