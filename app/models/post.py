@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
-from join_tables import post_likes
+from .join_tables import post_likes
 
 class Post(db.Model):
     __tablename__ = 'posts'
@@ -47,7 +47,7 @@ class Post(db.Model):
             # 'comments': [comment.to_dict() for comment in self.comment],
             "created_at": self.created_at,
             "updated_at": self.updated_at,
-            # "post_user_like": len(self.post_user_likes)
+            "post_user_like": len(self.post_user_likes)
         }
 
     def to_dict_no_user(self):

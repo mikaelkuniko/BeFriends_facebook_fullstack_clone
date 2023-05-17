@@ -3,8 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
-from join_tables import post_likes
-# ,comment_likes
+from .join_tables import post_likes, comment_likes
 
 
 class User(db.Model, UserMixin):
@@ -36,9 +35,9 @@ class User(db.Model, UserMixin):
                                       secondary=post_likes,
                                       back_populates="post_user_likes")
     
-    # user_comment_likes = db.relationship("Comment",
-    #                             secondary=comment_likes,
-    #                             back_populates='comment_user_likes')
+    user_comment_likes = db.relationship("Comment",
+                                secondary=comment_likes,
+                                back_populates='comment_user_likes')
 
     @property
     def password(self):
