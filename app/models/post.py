@@ -15,13 +15,15 @@ class Post(db.Model):
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), default=func.now())
 
-    # One to many realationships
+    # Many to one relationships
 
     user = db.relationship('User', back_populates='post')
 
+    # One to many
+
     comment = db.relationship('Comment', back_populates='post', cascade='all, delete-orphan')
 
-    # Many to many relationships
+    # One to many
 
     post_user_likes = db.relationship("User",
                                 secondary=post_likes,

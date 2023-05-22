@@ -25,7 +25,7 @@ class User(db.Model, UserMixin):
     updated_at = db.Column(db.DateTime(timezone=True), default=func.now())
 
     # USER CLASS RELATIONSHIPS
-    # One to many: User has many posts through owner_id
+    # One to many: User has many posts through user_id
     post = db.relationship('Post', back_populates='user', cascade='all, delete-orphan')
 
     comment = db.relationship('Comment', back_populates='user', cascade='all, delete-orphan')
