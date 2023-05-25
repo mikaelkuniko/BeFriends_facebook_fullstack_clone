@@ -30,7 +30,7 @@ class User(db.Model, UserMixin):
 
     comment = db.relationship('Comment', back_populates='user', cascade='all, delete-orphan')
 
-    # Many to many: User has many liked posts through post_likes
+    # Many to many: User has many liked posts through post_likes and many liked comments through comment_likes
     user_post_likes = db.relationship("Post",
                                       secondary=post_likes,
                                       back_populates="post_user_likes")
