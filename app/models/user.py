@@ -33,10 +33,14 @@ class User(db.Model, UserMixin):
     # Many to many: User has many liked posts through post_likes and many liked comments through comment_likes
     user_post_likes = db.relationship("Post",
                                       secondary=post_likes,
+                                    #   primaryjoin="User.id == post_likes.c.user_id",
+                                    #   secondaryjoin="Post.id == post_likes.c.post_id",
                                       back_populates="post_user_likes")
     
     user_comment_likes = db.relationship("Comment",
                                 secondary=comment_likes,
+                                # primaryjoin="User.id == comment_likes.c.user_id",
+                                # secondaryjoin="Comment.id == comment_likes.c.comment_id",
                                 back_populates='comment_user_likes')
 
     @property
