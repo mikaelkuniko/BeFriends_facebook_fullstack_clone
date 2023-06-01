@@ -1,7 +1,7 @@
 from .db import add_prefix_for_prod, db, environment, SCHEMA
 from sqlalchemy.sql import func
 
-post_likes = db.table(
+post_likes = db.Table(
     'post_likes',
     db.Column("user_id", db.ForeignKey(
         add_prefix_for_prod('users.id')), primary_key=True),
@@ -10,7 +10,7 @@ post_likes = db.table(
     db.Column("created_at", db.DateTime(timezone=True), default=func.now())
 )
 
-comment_likes = db.table(
+comment_likes = db.Table(
     'comment_likes',
     db.Column("user_id", db.ForeignKey(
         add_prefix_for_prod('users.id')), primary_key=True),

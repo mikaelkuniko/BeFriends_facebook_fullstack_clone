@@ -19,7 +19,7 @@ def seed_join_tables():
         post = randomPost()
         comment = randomComment()
         user.user_post_likes.append(post)
-        user.user.comment_likes.append(comment)
+        user.user_comment_likes.append(comment)
         db.session.add(user)
         db.session.commit()
 
