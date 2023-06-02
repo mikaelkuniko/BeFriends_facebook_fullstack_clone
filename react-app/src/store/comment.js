@@ -59,6 +59,7 @@ export const commentCreate = (comment) => async dispatch => {
 
 export const userComments = () => async dispatch => {
     const response = await fetch(`/api/comments/current`)
+    // console.log('this is checking inside thunk')
 
     if(response.ok){
         const comments = await response.json()
