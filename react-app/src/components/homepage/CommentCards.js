@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { allComments, removeComment } from "../../store/comment";
+import { authenticate } from "../../store/session";
 import EditCommentModal from "./EditCommentModal";
 import './CommentCards.css'
 
@@ -33,11 +34,19 @@ function CommentCards(comment) {
             }
         })
         await response.json();
+        dispatch(authenticate())
     }
 
     const addCommentLike = async () => {
         e.preventDefault();
-        const response
+        const response = await fetch(`/api/users/${currentUserId}/commentlike`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        await response.json();
+        dispatch(authenticate())
     }
 
 
