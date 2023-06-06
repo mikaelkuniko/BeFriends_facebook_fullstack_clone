@@ -13,7 +13,7 @@ function CommentCards(comment) {
 
     // console.log('This is comment', comment)
 
-    console.log("This is comment obj check for likes", comment)
+    // console.log("This is comment obj check for likes", comment)
 
     const currentUserId = useSelector((state) => state.session.user.id)
     const user = useSelector((state) => state.session.user)
@@ -21,6 +21,23 @@ function CommentCards(comment) {
     const deleteComment = async () => {
         await dispatch(removeComment(comment.id))
         alert('Comment Deleted')
+    }
+
+    // creates method to delete a like from comment
+    const deleteCommentLike = async () => {
+        e.preventDefault();
+        const response = await fetch(`/api/users/${currentUserId}/commentlike`, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        await response.json();
+    }
+
+    const addCommentLike = async () => {
+        e.preventDefault();
+        const response
     }
 
 
