@@ -25,7 +25,7 @@ function CommentCards(comment) {
     }
 
     // creates method to delete a like from comment
-    const deleteCommentLike = async () => {
+    const deleteCommentLike = async (e) => {
         e.preventDefault();
         const response = await fetch(`/api/users/${currentUserId}/commentlike`, {
             method: 'DELETE',
@@ -37,7 +37,7 @@ function CommentCards(comment) {
         dispatch(authenticate())
     }
 
-    const addCommentLike = async () => {
+    const addCommentLike = async (e) => {
         e.preventDefault();
         const response = await fetch(`/api/users/${currentUserId}/commentlike`, {
             method: 'POST',
