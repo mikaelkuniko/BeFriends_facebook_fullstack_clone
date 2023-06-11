@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { removePost, allPosts } from '../../store/post'
+import { authenticate } from '../../store/session'
 import { allComments } from '../../store/comment'
 import EditPostModal from './EditPostModal'
 import './PostCards.css'
@@ -18,7 +19,7 @@ function PostCards(post) {
     }
 
     const currentUser = useSelector((state) => state.session.user.id)
-    const allComms = useSelector((state)=> state.comments.allComments)
+    const allComms = useSelector((state) => state.comments.allComments)
     // console.log("This is current user", currentUser)
     // console.log("This is all comms", allComms)
     const comments = Object.values(allComms).reverse()
@@ -27,6 +28,31 @@ function PostCards(post) {
     // console.log("This is the post's comments", postComments)
     // console.log("This is single post", post)
 
+
+    // creates method to delete a like from post
+    const deletePostLike = async (e) => {
+        e.preventDefault();
+        const response = await fetch(`/api/users/${currentUser.id}/postlike`, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        await response.json();
+        dispatch(authenticate())
+    }
+
+    const addPostLike = async (e) => {
+        e.preventDefault();
+        const response = await fetch(`/api/users/${currentUser.id}/postlike`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        await response.json();
+        dispatch(authenticate())
+    }
 
     useEffect(() => {
         dispatch(allPosts())
@@ -53,7 +79,7 @@ function PostCards(post) {
                 </div>
                 <div className='edit-delete'>
                     <div>{currentUser == post.user.id && (
-                    <EditPostModal post={post} className='edit-delete-buttons'/>
+                        <EditPostModal post={post} className='edit-delete-buttons' />
                     )}
                     </div>
 
@@ -71,19 +97,19 @@ function PostCards(post) {
             </div>
             <div className='comments-likes'>
                 <div className='cl-bar'>
-                    <div onClick={()=>{alert('Coming soon!')}} id='likes-div'>
-                    <i class="fa-regular fa-thumbs-up" ></i> Like
+                    <div onClick={() => { alert('Coming soon!') }} id='likes-div'>
+                        <i class="fa-regular fa-thumbs-up" ></i> Like
                     </div>
                     <div>
-                    <i class="fa-regular fa-comment"></i> Comment
+                        <i class="fa-regular fa-comment"></i> Comment
                     </div>
                 </div>
                 <div>
-                    <CreateCommentForm post={post}/>
+                    <CreateCommentForm post={post} />
                 </div>
                 <div>
-                    {postComments.map((comment)=> (
-                        <CommentCards key={comment.id} {...comment}/>
+                    {postComments.map((comment) => (
+                        <CommentCards key={comment.id} {...comment} />
                     ))}
                 </div>
             </div>
