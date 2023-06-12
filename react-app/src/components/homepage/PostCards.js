@@ -59,7 +59,7 @@ function PostCards(post) {
         dispatch(allComments())
     }, [dispatch])
     // const post = useSelector(state => state.posts)
-    // console.log("This is single post", post)
+    console.log("This is single post", post)
 
 
 
@@ -94,6 +94,9 @@ function PostCards(post) {
             </div>
             <div className='post-content'>
                 <p>{post.post}</p>
+            </div>
+            <div className='reactions'>
+                {post.post_user_like > 0 && (<p>{post.post_user_like}</p>)}
             </div>
             <div className='comments-likes'>
                 <div className='cl-bar'>
