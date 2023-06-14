@@ -20,7 +20,7 @@ function PostCards(post) {
 
     const currentUser = useSelector((state) => state.session.user.id)
     const allComms = useSelector((state) => state.comments.allComments)
-    // console.log("This is current user", currentUser)
+    console.log("This is current user", currentUser)
     // console.log("This is all comms", allComms)
     const comments = Object.values(allComms).reverse()
     // console.log("This is comments by time", comments)
@@ -32,7 +32,7 @@ function PostCards(post) {
     // creates method to delete a like from post
     const deletePostLike = async (e) => {
         e.preventDefault();
-        const response = await fetch(`/api/users/${currentUser.id}/postlike`, {
+        const response = await fetch(`/api/users/${currentUser}/postlike`, {
             method: 'DELETE',
             headers: {
                 "Content-Type": "application/json"
@@ -44,7 +44,7 @@ function PostCards(post) {
 
     const addPostLike = async (e) => {
         e.preventDefault();
-        const response = await fetch(`/api/users/${currentUser.id}/postlike`, {
+        const response = await fetch(`/api/users/${currentUser}/postlike`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
@@ -59,7 +59,7 @@ function PostCards(post) {
         dispatch(allComments())
     }, [dispatch])
     // const post = useSelector(state => state.posts)
-    console.log("This is single post", post)
+    // console.log("This is single post", post)
 
 
 
@@ -96,11 +96,14 @@ function PostCards(post) {
                 <p>{post.post}</p>
             </div>
             <div className='reactions'>
-                {post.post_user_like > 0 && (<p>{post.post_user_like}</p>)}
+                {post.post_user_like > 0 && (<p>{post.post_user_like} likes</p>)}
             </div>
             <div className='comments-likes'>
                 <div className='cl-bar'>
-                    <div onClick={() => { alert('Coming soon!') }} id='likes-div'>
+                    {/* <div onClick={() => { alert('Coming soon!') }} id='likes-div'>
+                        <i class="fa-regular fa-thumbs-up" ></i> Like
+                    </div> */}
+                     <div onClick={addPostLike} id='likes-div'>
                         <i class="fa-regular fa-thumbs-up" ></i> Like
                     </div>
                     <div>
