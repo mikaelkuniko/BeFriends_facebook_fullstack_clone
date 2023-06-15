@@ -12,7 +12,7 @@ function CommentCards(comment) {
         dispatch(allComments)
     }, [dispatch])
 
-    console.log('This is comment', comment)
+    // console.log('This is comment', comment)
 
     // console.log("This is comment obj check for likes", comment)
 
