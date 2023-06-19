@@ -90,18 +90,42 @@ def delete_item(id):
 @login_required
 def add_post_like(id):
     """
-    Adds a like to a post by current user
+    Adds a like to a post by current user//
+    WIP
     """
     current = current_user.to_dict()
     user = User.query.get(current['id'])
     post = Post.query.get(id)
     # print('Inside the post like')
-    print("This is the current user", user)
-    print("This is the post ID", post)
+    # print("This is the current user", user)
+    # print("This is the post ID", post)
 
-    user.user_post_likes.append(post)
+    post.post_user_likes.append(user)
     db.session.add(user)
-    print("This is the user posts liked", user.user_post_likes)
+    print("This is the posts user likes", post)
     db.session.commit()
 
     return {"message": "Liked post"}, 200
+
+@post_routes.route('/<int:id>/postlike', methods=['DELETE'])
+@login_required
+def delete_post_like(id):
+    """
+    Delete the like that the User input on the post/
+
+    WIP
+    """
+    post = Post.query.get(id)
+    current = current_user.to_dict()
+    user = User.query.get(current['id'])
+
+    if len(post.post_user_likes):
+        for i in range(len(post.post_user_likes)):
+            if post.post_user_likes[i].id == id:
+                post.post_user_likes.pop(i)
+                db.session.add(post)
+                db.session.commit()
+
+                return {'message': 'deleted like from post'}
+            
+    return {'errors': 'Post not found'}, 404
