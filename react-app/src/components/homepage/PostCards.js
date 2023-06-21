@@ -42,9 +42,22 @@ function PostCards(post) {
         dispatch(authenticate())
     }
 
+    // const addPostLike = async (e) => {
+    //     e.preventDefault();
+    //     const response = await fetch(`/api/users/${currentUser}/postlike`, {
+    //         method: 'POST',
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         }
+    //     })
+    //     await response.json();
+    //     dispatch(authenticate())
+    // }
+
+
     const addPostLike = async (e) => {
         e.preventDefault();
-        const response = await fetch(`/api/users/${currentUser}/postlike`, {
+        const response = await fetch(`/api/posts/${post.id}/postlike`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
