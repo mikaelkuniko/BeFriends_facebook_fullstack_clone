@@ -74,7 +74,7 @@ def add_post_like(id):
     user = User.query.get(current['id'])
     post = Post.query.get(id)
     # print('Inside the post like')
-    print("This is the current user", user)
+    print("-------------This is the current user-------------", user)
     print("This is the post ID", post)
 
     user.user_post_likes.append(post)
