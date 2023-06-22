@@ -26,13 +26,13 @@ function PostCards(post) {
     // console.log("This is comments by time", comments)
     const postComments = comments.filter((comment) => Number(post.id) === Number(comment.post.id))
     // console.log("This is the post's comments", postComments)
-    console.log("This is single post", post)
+    // console.log("This is single post", post)
 
 
     // creates method to delete a like from post
     const deletePostLike = async (e) => {
         e.preventDefault();
-        const response = await fetch(`/api/users/${currentUser}/postlike`, {
+        const response = await fetch(`/api/posts/${post.id}/postlike`, {
             method: 'DELETE',
             headers: {
                 "Content-Type": "application/json"
@@ -56,7 +56,7 @@ function PostCards(post) {
 
 
     const addPostLike = async (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         const response = await fetch(`/api/posts/${post.id}/postlike`, {
             method: 'POST',
             headers: {
@@ -119,6 +119,7 @@ function PostCards(post) {
                      <div onClick={addPostLike} id='likes-div'>
                         <i class="fa-regular fa-thumbs-up" ></i> Like
                     </div>
+                    <div onClick={deletePostLike}> delete like (testing only) </div>
                     <div>
                         <i class="fa-regular fa-comment"></i> Comment
                     </div>

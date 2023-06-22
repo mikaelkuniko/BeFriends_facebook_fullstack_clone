@@ -96,9 +96,9 @@ def add_post_like(id):
     current = current_user.to_dict()
     user = User.query.get(current['id'])
     post = Post.query.get(id)
-    print('Inside the post like')
-    print("This is the current user", user)
-    print("This is the post ID", post)
+    # print('Inside the post like')
+    # print("This is the current user", user)
+    # print("This is the post ID", post)
 
     post.post_user_likes.append(user)
     db.session.add(user)
@@ -119,9 +119,11 @@ def delete_post_like(id):
     current = current_user.to_dict()
     user = User.query.get(current['id'])
 
+    # print('--------------------------------------------------------This is the post likes---------------------------------------------------', post.post_user_likes)
+
     if len(post.post_user_likes):
         for i in range(len(post.post_user_likes)):
-            if post.post_user_likes[i].id == id:
+            if post.post_user_likes[i].id == user:
                 post.post_user_likes.pop(i)
                 db.session.add(post)
                 db.session.commit()
