@@ -120,6 +120,7 @@ def delete_post_like(id):
     user = User.query.get(current['id'])
 
     # print('--------------------------------------------------------This is the post likes---------------------------------------------------', post.post_user_likes)
+    # print("----------------------This s user", user)
 
     if len(post.post_user_likes):
         for i in range(len(post.post_user_likes)):
