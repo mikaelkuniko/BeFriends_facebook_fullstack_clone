@@ -121,7 +121,7 @@ def delete_post_like(id):
 
     # print('--------------------------------------------------------This is the post likes---------------------------------------------------', post.post_user_likes)
     # print("----------------------This is user", user)
-    print("This is list of users that liked the post", post.post_user_likes)
+    # print("This is list of users that liked the post", post.post_user_likes)
 
     if len(post.post_user_likes):
         for i in range(len(post.post_user_likes)):
