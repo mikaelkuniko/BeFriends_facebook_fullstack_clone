@@ -119,13 +119,13 @@ def delete_post_like(id):
     current = current_user.to_dict()
     user = User.query.get(current['id'])
 
-    # print('--------------------------------------------------------This is the post likes---------------------------------------------------', post.post_user_likes)
-    # print("----------------------This is user", user)
-    # print("This is list of users that liked the post", post.post_user_likes)
+    print('--------------------------------------------------------This is the post likes---------------------------------------------------', post.post_user_likes)
+    print("----------------------This is user", user)
+    print("This is list of users that liked the post", post.post_user_likes)
 
     if len(post.post_user_likes):
         for i in range(len(post.post_user_likes)):
-            if post.post_user_likes[i].id == user:
+            if post.post_user_likes[i].id == user.id:
                 post.post_user_likes.pop(i)
                 db.session.add(post)
                 db.session.commit()
