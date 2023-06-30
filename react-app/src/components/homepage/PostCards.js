@@ -119,7 +119,7 @@ function PostCards(post) {
                      <div onClick={addPostLike} id='likes-div'>
                         <i class="fa-regular fa-thumbs-up" ></i> Like
                     </div>
-                    <div onClick={deletePostLike}> delete like (testing only) </div>
+                    <div onClick={deletePostLike}> delete like </div>
                     <div>
                         <i class="fa-regular fa-comment"></i> Comment
                     </div>
