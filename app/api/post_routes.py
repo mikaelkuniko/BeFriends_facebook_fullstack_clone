@@ -90,8 +90,7 @@ def delete_item(id):
 @login_required
 def add_post_like(id):
     """
-    Adds a like to a post by current user//
-    WIP
+    Adds a like to a post by current user/
     """
     current = current_user.to_dict()
     user = User.query.get(current['id'])
@@ -111,9 +110,7 @@ def add_post_like(id):
 @login_required
 def delete_post_like(id):
     """
-    Delete the like that the User input on the post/
-
-    WIP
+    Delete the like that the User input on the post
     """
     post = Post.query.get(id)
     current = current_user.to_dict()
