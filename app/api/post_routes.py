@@ -101,7 +101,7 @@ def add_post_like(id):
 
     post.post_user_likes.append(user)
     db.session.add(user)
-    print("This is the posts user likes", post)
+    # print("This is the posts user likes", post)
     db.session.commit()
 
     return {"message": "Liked post"}, 200
