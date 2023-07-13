@@ -120,7 +120,7 @@ function PostCards(post) {
                         <i class="fa-regular fa-thumbs-up" ></i> Like
                     </div>
                     <div onClick={deletePostLike}> delete like </div>
-                    {/* edit this to if user already liked to redirect to removing like */}
+                    {/* edit this to if user already liked to show the button for removing a like */}
                     <div>
                         <i class="fa-regular fa-comment"></i> Comment
                     </div>
