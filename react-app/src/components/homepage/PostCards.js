@@ -113,6 +113,7 @@ function PostCards(post) {
             </div>
             <div className='comments-likes'>
                 <div className='cl-bar'>
+                    {/* if user has liked post show liked icon and clicking will remove the previous like */}
                     {/* <div onClick={() => { alert('Coming soon!') }} id='likes-div'>
                         <i class="fa-regular fa-thumbs-up" ></i> Like
                     </div> */}
@@ -120,7 +121,6 @@ function PostCards(post) {
                         <i class="fa-regular fa-thumbs-up" ></i> Like
                     </div>
                     <div onClick={deletePostLike}> delete like </div>
-                    {/* edit this to if user already liked to show the button for removing a like */}
                     <div>
                         <i class="fa-regular fa-comment"></i> Comment
                     </div>
