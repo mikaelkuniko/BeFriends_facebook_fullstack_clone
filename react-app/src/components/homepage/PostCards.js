@@ -19,14 +19,17 @@ function PostCards(post) {
     }
 
     const currentUser = useSelector((state) => state.session.user.id)
+    const currUserObj = useSelector((state) => state.session.user)
     const allComms = useSelector((state) => state.comments.allComments)
-    console.log("This is current user", currentUser)
+    // console.log("This is current user", currentUser)
     // console.log("This is all comms", allComms)
     const comments = Object.values(allComms).reverse()
     // console.log("This is comments by time", comments)
     const postComments = comments.filter((comment) => Number(post.id) === Number(comment.post.id))
     // console.log("This is the post's comments", postComments)
     // console.log("This is single post", post)
+    console.log("This is post", post)
+    console.log("This is current user", currUserObj)
 
 
     // creates method to delete a like from post
