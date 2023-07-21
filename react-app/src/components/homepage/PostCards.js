@@ -75,7 +75,7 @@ function PostCards(post) {
         dispatch(allComments())
     }, [dispatch])
     // const post = useSelector(state => state.posts)
-    // console.log("This is single post", post)
+    console.log("This is single post", post)
 
 
 
