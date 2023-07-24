@@ -28,7 +28,7 @@ function PostCards(post) {
     const postComments = comments.filter((comment) => Number(post.id) === Number(comment.post.id))
     // console.log("This is the post's comments", postComments)
     // console.log("This is single post", post)
-    console.log("This is post", post)
+    // console.log("This is post", post)
     console.log("This is current user", currUserObj)
 
 
@@ -75,7 +75,7 @@ function PostCards(post) {
         dispatch(allComments())
     }, [dispatch])
     // const post = useSelector(state => state.posts)
-    console.log("This is single post", post)
+    // console.log("This is single post", post)
 
 
 
