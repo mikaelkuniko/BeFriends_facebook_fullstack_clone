@@ -116,7 +116,6 @@ function PostCards(post) {
             </div>
             <div className='comments-likes'>
                 <div className='cl-bar'>
-                    {/* if user has liked post show liked icon and clicking will remove the previous like */}
                     {/* <div onClick={() => { alert('Coming soon!') }} id='likes-div'>
                         <i class="fa-regular fa-thumbs-up" ></i> Like
                     </div> */}
