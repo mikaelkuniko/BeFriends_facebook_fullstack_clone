@@ -50,7 +50,6 @@ class Post(db.Model):
             "created_at": self.created_at,
             "updated_at": self.updated_at,
             "post_user_like": len(self.post_user_likes),
-            # "user_liked":(self.post_user_likes)
         }
 
     def to_dict_no_user(self):
