@@ -87,6 +87,7 @@ function PostCards(post) {
                 <div className='user'>
                     {!post.user.profile_pic && (
                         // <img src='../../../public/default_profile/default_user' />
+                        // change seeds to aws
                         <i class="fa-regular fa-user"></i>
                     )}
                     <h4 id='user-name'>
