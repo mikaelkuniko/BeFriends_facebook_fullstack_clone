@@ -61,8 +61,7 @@ class Post(db.Model):
             post,
             created_at,
             updated_at,
-            add method to check join table?
-            check likes join table for user ids
+           
         }
         '''
         return{
