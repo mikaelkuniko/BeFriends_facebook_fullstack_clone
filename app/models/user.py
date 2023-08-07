@@ -12,6 +12,8 @@ class User(db.Model, UserMixin):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
+    # create aws for profile pics
+
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(1000), nullable=False)
     last_name = db.Column(db.String(1000), nullable=False)
