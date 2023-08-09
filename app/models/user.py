@@ -13,6 +13,7 @@ class User(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     # create aws for profile pics
+    # edit models to accomodate aws links
 
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(1000), nullable=False)
