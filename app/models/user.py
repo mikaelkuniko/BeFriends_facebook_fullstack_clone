@@ -13,8 +13,8 @@ class User(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     # create aws for profile pics
-    # add models for aws pictures and profiles for aws
-
+    # models for aws pictures and profiles for aws
+    # 
 
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(1000), nullable=False)
