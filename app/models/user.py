@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
 
     # create aws for profile pics
     # models for aws pictures and profiles for aws
-    # 
+    #  create aws links
 
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(1000), nullable=False)
