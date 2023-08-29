@@ -30,6 +30,8 @@ class User(db.Model, UserMixin):
 
     comment = db.relationship('Comment', back_populates='user', cascade='all, delete-orphan')
 
+    # create one to may relationship for aws profile pictures
+
     # Many to many: User has many liked posts through post_likes and many liked comments through comment_likes
     user_post_likes = db.relationship("Post",
                                       secondary=post_likes,
