@@ -32,6 +32,8 @@ class User(db.Model, UserMixin):
 
     # create one to many relationship for aws profile pictures
 
+    # create method to check user who liked picture
+
     # Many to many: User has many liked posts through post_likes and many liked comments through comment_likes
     user_post_likes = db.relationship("Post",
                                       secondary=post_likes,
