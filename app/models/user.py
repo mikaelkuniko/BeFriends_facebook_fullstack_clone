@@ -32,7 +32,7 @@ class User(db.Model, UserMixin):
 
     # create one to many relationship for aws profile pictures
 
-    # create method to check user who liked picture using secondary join tables and show the name in the feed
+    # create method to check user who liked picture using secondary join tables and show the name in the home feed
 
     # Many to many: User has many liked posts through post_likes and many liked comments through comment_likes
     user_post_likes = db.relationship("Post",
