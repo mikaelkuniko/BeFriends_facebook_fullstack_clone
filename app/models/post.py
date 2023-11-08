@@ -50,6 +50,8 @@ class Post(db.Model):
             "created_at": self.created_at,
             "updated_at": self.updated_at,
             "post_user_like": len(self.post_user_likes),
+            # some kind of breaking bug ith self.post-user_likes
+            # take user ids and grab user names to diplay
         }
 
     def to_dict_no_user(self):
