@@ -41,6 +41,7 @@ class Post(db.Model):
             updated_at,
             post_user_like
         }
+        method returns object for future use
         """
         return {
             "id": self.id,
