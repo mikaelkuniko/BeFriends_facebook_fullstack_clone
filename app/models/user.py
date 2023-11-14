@@ -73,6 +73,8 @@ class User(db.Model, UserMixin):
             posts,
             comments
         }
+
+        Returns the object for front end use
         '''
         return {
             'id': self.id,
