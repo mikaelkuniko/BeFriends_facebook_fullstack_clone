@@ -81,6 +81,7 @@ function PostCards(post) {
 
 
     if (!post) return null
+    // this if statement checks to ensure site doesnt crash
     return (
         <div className='post'>
             <div className='user-bar'>
