@@ -35,6 +35,7 @@ function PostCards(post) {
     // creates method to delete a like from post
     const deletePostLike = async (e) => {
         e.preventDefault();
+        // preventdefault prevents infinite loading of the page
         const response = await fetch(`/api/posts/${post.id}/postlike`, {
             method: 'DELETE',
             headers: {
