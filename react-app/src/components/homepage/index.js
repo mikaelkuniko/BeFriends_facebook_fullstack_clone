@@ -12,6 +12,7 @@ function Homepage(){
     const dispatch = useDispatch()
     const allPosts = useSelector(state => state.posts.allPosts)
     const posts = Object.values(allPosts).reverse()
+    // this variable sets so that all posts are in chronological order
     const user = useSelector(state=>state.session.user)
     // console.log("This is state", state)
     // console.log("this is user", user)
