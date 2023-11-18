@@ -116,6 +116,7 @@ function PostCards(post) {
             </div>
             <div className='reactions'>
                 {post.post_user_like > 0 && (<p>{post.post_user_like} likes</p>)}
+                {/* change model so it reflects users id so you can query through and grab the na,es */}
             </div>
             <div className='comments-likes'>
                 <div className='cl-bar'>
