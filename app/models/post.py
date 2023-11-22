@@ -56,6 +56,7 @@ class Post(db.Model):
             # "user_id_likes": (self.post_user_likes)
             # array test for user id
             # "user_id_for_likes": [self.post_user_likes for post_user in self.post]
+            # create method in post_like to return user ids that liked for each post 
         }
 
     def to_dict_no_user(self):
