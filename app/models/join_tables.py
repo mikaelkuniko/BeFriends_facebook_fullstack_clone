@@ -19,6 +19,16 @@ comment_likes = db.Table(
     db.Column("created_at", db.DateTime(timezone=True), default=func.now())
 )
 
+# create a method to query through created join tables
+# def to_dict(self):
+# '''
+# Returns a dict representing the post id and user ids that liked
+# return {
+# self.user_id,
+# self.comment_id
+# }
+# '''
+
 if environment == "production":
     post_likes.schema = SCHEMA
     comment_likes.schema = SCHEMA
