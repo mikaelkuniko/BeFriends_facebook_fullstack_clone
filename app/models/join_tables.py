@@ -20,7 +20,16 @@ comment_likes = db.Table(
 )
 
 # create a method to query through created join tables
-# def to_dict(self):
+# def to_dict_post_likes(self):
+# '''
+# Returns a dict representing the post id and user ids that liked
+# return {
+# self.user_id,
+# self.post_id
+# }
+# '''
+
+# def to_dict_comment_likes(self):
 # '''
 # Returns a dict representing the post id and user ids that liked
 # return {
