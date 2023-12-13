@@ -127,6 +127,7 @@ function PostCards(post) {
                         <i class="fa-regular fa-thumbs-up" ></i> Like
                     </div>
                     <div onClick={deletePostLike}> delete like </div>
+                    {/* implement liking based off if user has liked the post */}
                     <div>
                         <i class="fa-regular fa-comment"></i> Comment
                     </div>
