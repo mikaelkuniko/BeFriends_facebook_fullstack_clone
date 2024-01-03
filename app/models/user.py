@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
-from .join_tables import post_likes, comment_likes
+# from .join_tables import post_likes, comment_likes
 
 
 class User(db.Model, UserMixin):
@@ -35,17 +35,24 @@ class User(db.Model, UserMixin):
     # create method to check user who liked picture using secondary join tables and show the name in the home feed
 
     # Many to many: User has many liked posts through post_likes and many liked comments through comment_likes
-    user_post_likes = db.relationship("Post",
-                                      secondary=post_likes,
-                                    #   primaryjoin="User.id == post_likes.c.user_id",
-                                    #   secondaryjoin="Post.id == post_likes.c.post_id",
-                                      back_populates="post_user_likes")
+    # user_post_likes = db.relationship("Post",
+    #                                   secondary=post_likes,
+    #                                 #   primaryjoin="User.id == post_likes.c.user_id",
+    #                                 #   secondaryjoin="Post.id == post_likes.c.post_id",
+    #                                   back_populates="post_user_likes")
     
-    user_comment_likes = db.relationship("Comment",
-                                secondary=comment_likes,
-                                # primaryjoin="User.id == comment_likes.c.user_id",
-                                # secondaryjoin="Comment.id == comment_likes.c.comment_id",
-                                back_populates='comment_user_likes')
+    # user_comment_likes = db.relationship("Comment",
+    #                             secondary=comment_likes,
+    #                             # primaryjoin="User.id == comment_likes.c.user_id",
+    #                             # secondaryjoin="Comment.id == comment_likes.c.comment_id",
+    #                             back_populates='comment_user_likes')
+    
+    '''
+    # revised with joins table recreated as a model (1/3/2024)
+
+    
+    '''
+    post_likes = db.relationship('Post_Likes', back_populates='user')
 
     @property
     def password(self):

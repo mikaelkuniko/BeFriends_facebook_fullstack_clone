@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.sql import func
-from sqlalchemy.orm import relationship
-from .join_tables import post_likes
+# from sqlalchemy.orm import relationship
+# from .join_tables import post_likes
 
 class Post(db.Model):
     __tablename__ = 'posts'
@@ -25,9 +25,16 @@ class Post(db.Model):
 
     # One to many
 
-    post_user_likes = db.relationship("User",
-                                secondary=post_likes,
-                                back_populates='user_post_likes')
+    # post_user_likes = db.relationship("User",
+    #                             secondary=post_likes,
+    #                             back_populates='user_post_likes')
+    
+    '''
+    # revised with joins table recreated as a model (1/3/2024)
+    
+    '''
+
+    post_likes = db.relationship('Post_Likes', back_populates='post')
 
     def to_dict(self):
         """
@@ -50,7 +57,11 @@ class Post(db.Model):
             # 'comments': [comment.to_dict() for comment in self.comment],
             "created_at": self.created_at,
             "updated_at": self.updated_at,
-            "post_user_like": len(self.post_user_likes),
+
+            "post_likes": [post_like.to_dict() for post_like in self.post_likes],
+            "user_likes": [likes.to_get_liked_user() for likes in self.post_likes]
+            # "post_user_like": len(self.post_user_likes),
+
             # some kind of breaking bug with self.post-user_likes
             # take user ids and grab user names to diplay
             # "user_id_likes": (self.post_user_likes)
