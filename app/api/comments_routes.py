@@ -100,6 +100,8 @@ def add_comment_like(id):
     # print("This is the current user", user)
     # print("This is the post ID", post)
 
+    # maybe remove feature for now, ask cory if necessary
+
     comment.comment_user_likes.append(user)
     db.session.add(user)
     db.session.commit()

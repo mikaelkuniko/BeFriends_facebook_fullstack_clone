@@ -99,6 +99,8 @@ def add_post_like(id):
     # print("This is the current user", user)
     # print("This is the post ID", post)
 
+    # creates a like immediately; however, needs to refresh to show changes
+
     post.post_user_likes.append(user)
     db.session.add(user)
     # print("This is the posts user likes", post)

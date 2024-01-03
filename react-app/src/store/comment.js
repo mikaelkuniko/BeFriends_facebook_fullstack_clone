@@ -111,6 +111,9 @@ export default function reducer (state = initialState, action) {
     switch(action.type) {
         case CREATE:
             // console.log("IN REDUCER CREATE", action)
+
+            //  ask to explain reducer and thunks
+            
             newState = {...state, allComments: {...state.allComments}, user: {...state.user}}
             newState.user[action.comment.id] = action.comment
             newState.allComments[action.comment.id] = action.comment
