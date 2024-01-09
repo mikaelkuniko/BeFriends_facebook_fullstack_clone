@@ -24,9 +24,9 @@ class Comment(db.Model):
 
     #  Many to many relationships
 
-    comment_user_likes = db.relationship("User",
-                                secondary=comment_likes,
-                                back_populates='user_comment_likes')
+    # comment_user_likes = db.relationship("User",
+    #                             secondary=comment_likes,
+    #                             back_populates='user_comment_likes')
 
     def to_dict(self):
         """
