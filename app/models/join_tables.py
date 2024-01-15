@@ -22,7 +22,7 @@ from sqlalchemy.sql import func
 # )
 
 
-class Post_Likes(db.Model):
+class Post_Like(db.Model):
     __tablename__ = 'post_likes'
 
     if environment == "production":
@@ -80,5 +80,5 @@ comment_likes = db.Table(
 
 
 if environment == "production":
-    post_likes.schema = SCHEMA
+    # post_likes.schema = SCHEMA
     comment_likes.schema = SCHEMA

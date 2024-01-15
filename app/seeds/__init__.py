@@ -2,7 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .posts import seed_posts, undo_posts
 from .comments import seed_comments, undo_comments
-from .join_tables import seed_join_tables, undo_join_tables
+from .join_tables import seed_join_tables, undo_join_tables, seed_likes
 
 
 from app.models.db import db, environment, SCHEMA
@@ -28,6 +28,7 @@ def seed():
     seed_posts()
     seed_comments()
     seed_join_tables()
+
     # Add other seed functions here
 
 

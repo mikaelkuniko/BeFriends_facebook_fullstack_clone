@@ -104,6 +104,20 @@ def add_post_like(id):
     db.session.commit()
     return new_like.to_dict(), 201
     
+# DELETE A LIKE to the post
+@post_routes.route('/<int:id>/postlike', methods=['DELETE'])
+@login_required
+def delete_post_like(id):
+    '''
+    Deletes a like from the post
+    '''
+    current = current_user.to_dict()
+    user = User.query.get(current['id'])
+
+    # if the current user id has liked the post delete the like
+    post_like = Post_Likes.query.get()
+
+
 
 
 # Add a like to a post commented out 1/4/2024

@@ -1,4 +1,4 @@
-from app.models import db, User, Post, Comment
+from app.models import db, User, Post, Comment, Post_Like
 from app.models.join_tables import *
 import random
 
@@ -22,6 +22,23 @@ def seed_join_tables():
         user.user_comment_likes.append(comment)
         db.session.add(user)
         db.session.commit()
+
+def seed_likes():
+
+    users = User.query.all()
+    posts = Post.query.all()
+
+    def randomPost():
+        return posts[random.randint(0, len(posts)-2)]
+    
+    for user in users:
+        new_like = Post_Like(
+            user_id = user.id,
+            post_id = randomPost().id
+        )
+        db.session.add(new_like)
+        db.session.commit
+
 
 def undo_join_tables():
     if environment == "production":
