@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Post
 from sqlalchemy import or_
-from ..models import db, Post, User, Post_Likes
+from ..models import db, Post, User, Post_Like
 from ..forms import PostForm
 
 post_routes = Blueprint('post', __name__)
@@ -91,11 +91,13 @@ def delete_item(id):
 def add_post_like(id):
     '''
     Adds a like to the post by current user id
+
+    need to add validator if user has already liked the post
     '''
     current = current_user.to_dict()
     user = User.query.get(current['id'])
 
-    new_like = Post_Likes()
+    new_like = Post_Like()
     print("this is the user", user)
     new_like.user_id = user.id
     new_like.post_id = id
@@ -103,6 +105,8 @@ def add_post_like(id):
     db.session.add(new_like)
     db.session.commit()
     return new_like.to_dict(), 201
+
+
     
 # DELETE A LIKE to the post
 @post_routes.route('/<int:id>/postlike', methods=['DELETE'])
@@ -115,7 +119,7 @@ def delete_post_like(id):
     user = User.query.get(current['id'])
 
     # if the current user id has liked the post delete the like
-    post_like = Post_Likes.query.get()
+    post_like = Post_Like.query.get()
 
 
 
