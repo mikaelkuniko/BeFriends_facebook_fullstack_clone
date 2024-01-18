@@ -34,7 +34,7 @@ class Post(db.Model):
     
     '''
 
-    post_like = db.relationship('Post_Like', back_populates='post')
+    post_likes = db.relationship('Post_Like', back_populates='post')
 
     def to_dict(self):
         """

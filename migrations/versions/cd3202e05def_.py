@@ -54,7 +54,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('post_likes',
-    sa.Column('id', sa.Integer(), nullable=False),
+    # sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('post_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['post_id'], ['posts.id'], ),
