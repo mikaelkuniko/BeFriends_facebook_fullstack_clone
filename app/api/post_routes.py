@@ -97,14 +97,19 @@ def add_post_like(id):
     current = current_user.to_dict()
     user = User.query.get(current['id'])
 
-    new_like = Post_Like()
-    print("this is the user", user)
-    new_like.user_id = user.id
-    new_like.post_id = id
+    check_like = Post_Like.query.filter_by(user_id=user.id, post_id=id).first()
 
-    db.session.add(new_like)
-    db.session.commit()
-    return new_like.to_dict(), 201
+
+    if check_like:
+        return {"errors": 'User has already liked the post'}, 400
+    else:
+        new_like = Post_Like()
+        # print("this is the user", user)
+        new_like.user_id = user.id
+        new_like.post_id = id
+        db.session.add(new_like)
+        db.session.commit()
+        return new_like.to_dict(), 201
 
 
     
