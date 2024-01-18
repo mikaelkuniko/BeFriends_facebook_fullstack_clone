@@ -11,7 +11,7 @@ from sqlalchemy.sql import func
 #     db.Column("created_at", db.DateTime(timezone=True), default=func.now())
 
 #     # create a method to query through created join tables
-# # def to_dict_post_likes(self):
+# # def to_dict_post_likes(se›f):
 # # '''
 # # Returns a dict representing the post id and user ids that liked
 # # return {
