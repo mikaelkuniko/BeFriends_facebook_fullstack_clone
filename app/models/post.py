@@ -58,8 +58,8 @@ class Post(db.Model):
             "created_at": self.created_at,
             "updated_at": self.updated_at,
 
-            "post_likes": [post_like.to_dict() for post_like in self.post_like],
-            "user_likes": [likes.to_get_liked_user() for likes in self.post_like]
+            "post_likes": [post_like.to_dict() for post_like in self.post_likes],
+            "user_likes": [likes.to_get_liked_user() for likes in self.post_likes]
             # "post_user_like": len(self.post_user_likes),
 
             # some kind of breaking bug with self.post-user_likes
