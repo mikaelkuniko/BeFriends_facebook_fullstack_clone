@@ -42,10 +42,10 @@ def seed_likes():
 
 def undo_join_tables():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.post_likes RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.post_like RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.comment_likes RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM post_likes")
+        db.session.execute("DELETE FROM post_like")
         db.session.execute("DELETE FROM comment_likes")
 
     db.session.commit()

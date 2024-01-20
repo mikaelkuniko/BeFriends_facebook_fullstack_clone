@@ -25,15 +25,15 @@ def seed():
         undo_posts()
         undo_users()
     seed_users()
-    print('Users seeded')
+    # print('Users seeded')
     seed_posts()
-    print('Posts seeded')
+    # print('Posts seeded')
     seed_comments()
-    print('Comments seeded')
+    # print('Comments seeded')
     seed_join_tables()
-    print('Post likes seeded')
+    # print('Post likes seeded')
     seed_likes()
-    print('Likes seeded')
+    # print('Likes seeded')
 
     # Add other seed functions here
 
