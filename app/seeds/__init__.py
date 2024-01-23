@@ -2,7 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .posts import seed_posts, undo_posts
 from .comments import seed_comments, undo_comments
-from .join_tables import seed_join_tables, undo_join_tables, seed_likes
+from .join_tables import seed_join_tables, undo_join_tables, seed_post_likes, undo_post_likes
 
 
 from app.models.db import db, environment, SCHEMA
@@ -25,14 +25,14 @@ def seed():
         undo_posts()
         undo_users()
     seed_users()
-    # print('Users seeded')
+    print('Users seeded')
     seed_posts()
-    # print('Posts seeded')
+    print('Posts seeded')
     seed_comments()
-    # print('Comments seeded')
-    seed_join_tables()
-    # print('Post likes seeded')
-    seed_likes()
+    print('Comments seeded')
+    # seed_join_tables()
+    seed_post_likes()
+    print('Post likes seeded')
     # print('Likes seeded')
 
     # Add other seed functions here
@@ -41,7 +41,8 @@ def seed():
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
-    undo_join_tables()
+    undo_post_likes()
+    # undo_join_tables()
     undo_comments()
     undo_posts()
     undo_users()

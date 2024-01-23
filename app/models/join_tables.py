@@ -60,13 +60,13 @@ class Post_Like(db.Model):
 
 
 
-comment_likes = db.Table(
-    'comment_likes',
-    db.Column("user_id", db.ForeignKey(
-        add_prefix_for_prod('users.id')), primary_key=True),
-    db.Column("comment_id", db.ForeignKey(
-        add_prefix_for_prod('comments.id')), primary_key=True),
-    db.Column("created_at", db.DateTime(timezone=True), default=func.now())
+# comment_likes = db.Table(
+#     'comment_likes',
+#     db.Column("user_id", db.ForeignKey(
+#         add_prefix_for_prod('users.id')), primary_key=True),
+#     db.Column("comment_id", db.ForeignKey(
+#         add_prefix_for_prod('comments.id')), primary_key=True),
+#     db.Column("created_at", db.DateTime(timezone=True), default=func.now())
 
 # def to_dict_comment_likes(self):
 # '''
@@ -76,9 +76,9 @@ comment_likes = db.Table(
 # self.comment_id
 # }
 # '''
-)
+# )
 
 
-if environment == "production":
-    # post_likes.schema = SCHEMA
-    comment_likes.schema = SCHEMA
+# if environment == "production":
+#     # post_likes.schema = SCHEMA
+#     comment_likes.schema = SCHEMA

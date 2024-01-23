@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
-from .join_tables import comment_likes
+# from .join_tables import comment_likes
 
 class Comment(db.Model):
     __tablename__ = 'comments'

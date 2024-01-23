@@ -52,7 +52,7 @@ class User(db.Model, UserMixin):
 
     
     '''
-    post_likes = db.relationship('Post_Like', back_populates='user')
+    post_likes = db.relationship('Post_Like', back_populates='user', cascade='all, delete')
 
     @property
     def password(self):

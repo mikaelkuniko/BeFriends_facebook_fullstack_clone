@@ -23,7 +23,7 @@ def seed_join_tables():
         db.session.add(user)
         db.session.commit()
 
-def seed_likes():
+def seed_post_likes():
 
     users = User.query.all()
     posts = Post.query.all()
@@ -32,12 +32,16 @@ def seed_likes():
         return posts[random.randint(0, len(posts)-2)]
     
     for user in users:
+        # print("this is user id", user.id)
+        # print("this is randompost id ", randomPost().id)
+
         new_like = Post_Like(
             user_id = user.id,
             post_id = randomPost().id
-        )
+            )
         db.session.add(new_like)
-        db.session.commit
+
+    db.session.commit()
 
 
 def undo_join_tables():
@@ -47,5 +51,13 @@ def undo_join_tables():
     else:
         db.session.execute("DELETE FROM post_like")
         db.session.execute("DELETE FROM comment_likes")
+
+    db.session.commit()
+
+def undo_post_likes():
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.post_like RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM post_likes")
 
     db.session.commit()
