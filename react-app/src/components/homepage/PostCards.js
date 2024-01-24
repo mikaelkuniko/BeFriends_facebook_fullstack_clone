@@ -31,7 +31,7 @@ function PostCards(post) {
     const postComments = comments.filter((comment) => Number(post.id) === Number(comment.post.id))
     // console.log("This is the post's comments", postComments)
     // console.log("This is single post", post)
-    // console.log("This is post", post)
+    console.log("This is post", post)
     // console.log("This is current user", currUserObj)
 
 
@@ -118,7 +118,7 @@ function PostCards(post) {
                 <p>{post.post}</p>
             </div>
             <div className='reactions'>
-                {post.post_user_like > 0 && (<p>{post.post_user_like} likes</p>)}
+                {post.post_likes.length > 0 && (<p>{post.post_likes.length} likes</p>)}
                 {/* create method in the join table reflects users id so you can query through and grab the names */}
             </div>
             <div className='comments-likes'>

@@ -47,5 +47,5 @@ class Comment(db.Model):
             "comment_text": self.comment_text,
             "created_at": self.created_at,
             "updated_at": self.updated_at,
-            "comment_user_likes": len(self.comment_user_likes)
+            # "comment_user_likes": len(self.comment_user_likes)
         }
