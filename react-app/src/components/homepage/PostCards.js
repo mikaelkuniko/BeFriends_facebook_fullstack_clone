@@ -32,6 +32,9 @@ function PostCards(post) {
     // console.log("This is the post's comments", postComments)
     // console.log("This is single post", post)
     console.log("This is post", post)
+    // console.log("this is the user_id of those who liked the post", post.user_likes)
+    const userLikedPost = post.user_likes.includes(currentUser)
+    console.log("Did current user like the post", userLikedPost)
     // console.log("This is current user", currUserObj)
 
 
@@ -126,11 +129,10 @@ function PostCards(post) {
                     {/* <div onClick={() => { alert('Coming soon!') }} id='likes-div'>
                         <i class="fa-regular fa-thumbs-up" ></i> Like
                     </div> */}
-                     <div onClick={addPostLike} id='likes-div'>
+                    {!userLikedPost && (<div onClick={addPostLike} id='likes-div'>
                         <i class="fa-regular fa-thumbs-up" ></i> Like
-                    </div>
-                    <div onClick={deletePostLike}> delete like </div>
-                    {/* implement liking based off if user has liked the post */}
+                    </div>)}
+                    {userLikedPost && (<div onClick={deletePostLike}> delete like </div>)}
                     <div>
                         <i class="fa-regular fa-comment"></i> Comment
                     </div>
