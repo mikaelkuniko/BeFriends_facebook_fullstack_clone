@@ -31,7 +31,7 @@ function PostCards(post) {
     const postComments = comments.filter((comment) => Number(post.id) === Number(comment.post.id))
     // console.log("This is the post's comments", postComments)
     // console.log("This is single post", post)
-    console.log("This is post", post)
+    // console.log("This is post", post)
     // console.log("this is the user_id of those who liked the post", post.user_likes)
     const userLikedPost = post.user_likes.includes(currentUser)
     console.log("Did current user like the post", userLikedPost)
