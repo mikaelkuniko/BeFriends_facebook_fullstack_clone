@@ -5,6 +5,10 @@ const USER = 'posts/USER'
 const UPDATE = 'posts/UPDATE'
 const DELETE = 'posts/DELETE'
 
+const ADDPOSTLIKE = 'posts/ADDPOSTLIKE'
+const DELETEPOSTLIKE = 'posts/DELETEPOSTLIKE'
+
+
 const createPost = (post) => {
     return {
         type: CREATE,
@@ -36,6 +40,20 @@ const updatePost = (post) => {
 const deletePost = (postId) => {
     return {
         type: DELETE,
+        postId
+    }
+}
+
+const addPostLike = (postId) => {
+    return {
+        type: ADDPOSTLIKE,
+        postId
+    }
+}
+
+const deletePostLike = (postId) => {
+    return {
+        type: DELETEPOSTLIKE,
         postId
     }
 }
@@ -99,6 +117,36 @@ export const removePost = (postId) => async dispatch => {
     if(response.ok) {
         const post = await response.json()
         dispatch(deletePost(postId))
+        return post
+    }
+}
+
+export const postAddLike = (postId) => async dispatch => {
+    const response = await fetch(`/api/posts/${post.id}/postlike`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+
+    if(response.ok) {
+        const post = await response.json()
+        dispatch(addPostLike(postId))
+        return post
+    }
+}
+
+export const postDeleteLike = (postId) => async dispatch => {
+    const response = await fetch(`/api/posts/${post.id}/postlike`, {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+
+    if(response.ok) {
+        const post = await response.json()
+        dispatch(deletePostLike(postId))
         return post
     }
 }

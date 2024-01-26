@@ -51,12 +51,15 @@ function PostCards(post) {
             }
         })
         await response.json();
-
+        console.log("this is the local state of post prior to delete", localPost)
         const updatedLikes = localPost.post_likes.filter(userId => userId !== currentUser)
+        const updatedUserLikes = localPost.user_likes.filter(userId => userId !== currentUser)
         setLocalPost({
             ...localPost,
-            post_likes: updatedLikes
+            post_likes: updatedLikes,
+            user_likes: updatedUserLikes
         });
+        console.log("this is the local state of post after like delete", localPost)
         dispatch(authenticate())
     }
 
@@ -82,12 +85,15 @@ function PostCards(post) {
             }
         })
         const newLike = await response.json();
-
+        console.log("this is local state of post prior to like", localPost)
         const updatedLikes = [...localPost.post_likes, newLike]
+        const updatedUserLikes = [...localPost.user_likes, currentUser]
         setLocalPost({
             ...localPost,
-            post_likes: updatedLikes
+            post_likes: updatedLikes,
+            user_likes: updatedUserLikes
         })
+        console.log("this is local state of post after to like", localPost)
         dispatch(authenticate())
     }
 
