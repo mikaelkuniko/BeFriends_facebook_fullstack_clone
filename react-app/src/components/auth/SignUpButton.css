@@ -8,3 +8,8 @@
     width: 280px;
     height: 30px;
 }
+
+#signup:hover{
+    cursor: pointer;
+    background-color: #3b9928;
+}

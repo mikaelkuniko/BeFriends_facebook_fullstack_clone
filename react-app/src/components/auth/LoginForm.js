@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 import SignupModal from './SignUpButton';
+import { NavLink, Link } from 'react-router-dom';
 import './LoginForm.css'
 
 const LoginForm = () => {
@@ -90,13 +91,15 @@ const LoginForm = () => {
               ))}
             </div>
             <button type='submit' id='log-in-button'>Log In</button>
-            <p id='my-link'>Placeholder / link to my site?</p>
+            <a href='https://github.com/mikaelkuniko'>
+              <p id='my-link'>Talk to the Creator?</p>
+            </a>
           </div>
         </form>
         <div>
-                {/* make this a modal */}
-              {/* <button onClick={signUp} id='sign-up'>Create new account</button> */}
-              <SignupModal/>
+          {/* make this a modal */}
+          {/* <button onClick={signUp} id='sign-up'>Create new account</button> */}
+          <SignupModal />
         </div>
       </div>
     </div>

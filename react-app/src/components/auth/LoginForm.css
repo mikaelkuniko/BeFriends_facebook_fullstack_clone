@@ -15,7 +15,7 @@ body {
     display: flex;
     align-content: center;
     justify-content: space-around;
-    padding: 92px 0px 132px;
+    padding: 177px 0px 177px;
 
 }
 
@@ -71,7 +71,22 @@ body {
     margin-bottom: 7px;
 }
 
-#my-link{
-    margin-left: 100px;
+#log-in-button:hover{
+    cursor: pointer;
+    background-color: #1e6cd2;
 }
 
+#my-link{
+    margin-left: 125px;
+    text-decoration: none;
+    color: #2374E1
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}

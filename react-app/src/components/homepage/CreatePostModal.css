@@ -1,0 +1,17 @@
+#create-post-button{
+    background-color: #f7f7f7;
+    color: #616060;
+    font-weight: 333;
+    font-size: 18px;
+    text-align: left;
+    border: none;
+    border-radius: 20px;
+    height: 44px;
+    padding: 10px 10px 10px 15px;
+    width: 510px
+}
+
+#create-post-button:hover {
+    background-color:#f1f1f1;
+    cursor: pointer;
+}

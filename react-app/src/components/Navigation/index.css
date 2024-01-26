@@ -1,0 +1,28 @@
+.nav-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: fit-content;
+    background-color: #ffff;
+    position: fixed;
+    width: 100%;
+    box-shadow: 1px 1px 1px #d1d1d1;
+    z-index: 7;
+    left: 0;
+    top: 0;
+    /* height: 55px;
+    justify-content: space-between;
+
+    top: 0;
+    width: 100%;
+    z-index: 5; */
+}
+
+#home{
+    text-decoration: none;
+    font-size: 35px;
+    font-weight: bold;
+    padding: 5px;
+    margin: 5px;
+    color: #2374E1;
+}

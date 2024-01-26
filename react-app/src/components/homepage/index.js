@@ -12,8 +12,10 @@ function Homepage(){
     const dispatch = useDispatch()
     const allPosts = useSelector(state => state.posts.allPosts)
     const posts = Object.values(allPosts).reverse()
+    // this variable sets so that all posts are in chronological order
     const user = useSelector(state=>state.session.user)
     // console.log("This is state", state)
+    // console.log("this is user", user)
 
     useEffect(()=> {
         dispatch(postActions.allPosts())
@@ -23,9 +25,15 @@ function Homepage(){
     if (posts.length === 0) return null;
 
     return (
-        <div>
+        <div className="posts-div">
             <div className="post-modal">
-                <div>Profile Image</div>
+                {!user.profile_pic && (
+                        // <img src='../../../public/default_profile/default_user' />
+                        <i class="fa-regular fa-user post-profile-pic"></i>
+                    )}
+                {user.profile_pic && (
+                        <img src={user.profile_pic}/>
+                    )}
                 <div>
                 <CreatePostModal user={user}/>
                 </div>

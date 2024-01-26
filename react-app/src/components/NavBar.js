@@ -9,7 +9,7 @@ const NavBar = () => {
       <ul>
         <li>
           <NavLink to='/' exact={true} activeClassName='active'>
-            Home
+            BeFriends
           </NavLink>
         </li>
         <li>

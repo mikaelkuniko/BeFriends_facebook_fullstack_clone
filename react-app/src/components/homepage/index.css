@@ -1,4 +1,32 @@
 .post-modal{
 display: flex;
 flex-direction: row;
+
+align-items: center;
+/* background-color: #242526;
+color: white; */
+background-color: #fff;
+border-radius: 7px;
+box-shadow: 0 1px 1px 1px rgba(202, 201, 201, 0.632);
+height: 100px;
+justify-content: center;
+width: 555px;
+padding: 20px;
+margin: auto;
+margin-top: 50px;
+}
+
+.posts-div{
+margin: auto;
+}
+
+body{
+   background-color: #f7f7f7
+   /* background-color: #dfe1ee; */
+}
+
+.post-profile-pic{
+    font-size: 24px;
+    /* margin-left: -30px; */
+    margin-right: 20px;
 }

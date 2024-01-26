@@ -1,0 +1,21 @@
+.comment-card{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.comment-body{
+    background-color: #f0efefd2;
+    border-radius: 7px;
+    padding: 10px;
+    max-height: 50%;
+    width: 444px;
+    word-wrap: break-word;
+    margin-left: 10px;
+}
+
+#delete-comment:hover{
+    cursor: pointer;
+}

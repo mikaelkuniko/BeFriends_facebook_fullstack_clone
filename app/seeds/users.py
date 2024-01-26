@@ -3,6 +3,7 @@ from app.models import db, User, environment, SCHEMA
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
+    print("Seed in users")
     demo = User(
         first_name='John',
         last_name='Doe',
@@ -112,7 +113,9 @@ def seed_users():
         gender='Female'
         )
 
+    print("About to add users to database")
     db.session.add(demo)
+    print("demo added")
     db.session.add(mikael)
     db.session.add(agnes)
     db.session.add(lily)
