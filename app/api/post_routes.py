@@ -124,7 +124,7 @@ def delete_post_like(id):
     user = User.query.get(current['id'])
 
     # if the current user id has liked the post delete the like
-    post_like = Post_Like.query.filter_by(user_id=current.id, post_id=id)
+    post_like = Post_Like.query.filter_by(user_id=user.id, post_id=id)
 
     if post_like:
         db.session.delete(post_like)

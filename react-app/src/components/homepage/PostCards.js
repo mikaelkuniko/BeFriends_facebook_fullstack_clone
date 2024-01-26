@@ -66,7 +66,7 @@ function PostCards(post) {
 
 
     const addPostLike = async (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         const response = await fetch(`/api/posts/${post.id}/postlike`, {
             method: 'POST',
             headers: {
@@ -132,7 +132,8 @@ function PostCards(post) {
                     {!userLikedPost && (<div onClick={addPostLike} id='likes-div'>
                         <i class="fa-regular fa-thumbs-up" ></i> Like
                     </div>)}
-                    {userLikedPost && (<div onClick={deletePostLike}> <i class="fa-solid fa-thumbs-up" ></i> Liked </div>)}
+                    {userLikedPost && (<div onClick={deletePostLike}> 
+                    <i class="fa-solid fa-thumbs-up" ></i> Like </div>)}
                     <div>
                         <i class="fa-regular fa-comment"></i> Comment
                     </div>
