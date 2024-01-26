@@ -69,7 +69,7 @@ export const userPosts = () => async dispatch => {
 
 export const allPosts = () => async dispatch => {
     const response = await fetch(`/api/posts`)
-    console.log("This is in the all posts")
+    // console.log("This is in the all posts")
     if(response.ok){
         const posts = await response.json()
         dispatch(loadAllPosts(posts))

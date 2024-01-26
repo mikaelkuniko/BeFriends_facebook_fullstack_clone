@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { removePost, allPosts } from '../../store/post'
+import { removePost, allPosts, postUpdate } from '../../store/post'
 import { authenticate } from '../../store/session'
 import { allComments } from '../../store/comment'
 import EditPostModal from './EditPostModal'
@@ -13,6 +13,8 @@ import CreateCommentForm from './CreateCommentForm'
 
 function PostCards(post) {
     const dispatch = useDispatch()
+    const [localPost, setLocalPost] = useState(post)
+
     const deletePost = async () => {
         await dispatch(removePost(post.id))
         alert('Post Deleted')
@@ -34,7 +36,7 @@ function PostCards(post) {
     // console.log("This is post", post)
     // console.log("this is the user_id of those who liked the post", post.user_likes)
     const userLikedPost = post.user_likes.includes(currentUser)
-    console.log("Did current user like the post", userLikedPost)
+    // console.log("Did current user like the post", userLikedPost)
     // console.log("This is current user", currUserObj)
 
 
@@ -49,6 +51,12 @@ function PostCards(post) {
             }
         })
         await response.json();
+
+        const updatedLikes = localPost.post_likes.filter(userId => userId !== currentUser)
+        setLocalPost({
+            ...localPost,
+            post_likes: updatedLikes
+        });
         dispatch(authenticate())
     }
 
@@ -73,7 +81,13 @@ function PostCards(post) {
                 "Content-Type": "application/json"
             }
         })
-        await response.json();
+        const newLike = await response.json();
+
+        const updatedLikes = [...localPost.post_likes, newLike]
+        setLocalPost({
+            ...localPost,
+            post_likes: updatedLikes
+        })
         dispatch(authenticate())
     }
 
@@ -84,7 +98,9 @@ function PostCards(post) {
     // const post = useSelector(state => state.posts)
     // console.log("This is single post", post)
 
-
+    useEffect(() => {
+        setLocalPost(post);
+    }, [post])
 
 
     if (!post) return null
