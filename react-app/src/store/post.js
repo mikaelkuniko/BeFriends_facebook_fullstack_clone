@@ -5,6 +5,10 @@ const USER = 'posts/USER'
 const UPDATE = 'posts/UPDATE'
 const DELETE = 'posts/DELETE'
 
+const ADDPOSTLIKE = 'posts/ADDPOSTLIKE'
+const DELETEPOSTLIKE = 'posts/DELETEPOSTLIKE'
+
+
 const createPost = (post) => {
     return {
         type: CREATE,
@@ -37,6 +41,22 @@ const deletePost = (postId) => {
     return {
         type: DELETE,
         postId
+    }
+}
+
+const addPostLike = (postId, currentUserId) => {
+    return {
+        type: ADDPOSTLIKE,
+        postId, 
+        currentUserId
+    }
+}
+
+const deletePostLike = (postId, currentUserId) => {
+    return {
+        type: DELETEPOSTLIKE,
+        postId,
+        currentUserId
     }
 }
 
@@ -103,6 +123,36 @@ export const removePost = (postId) => async dispatch => {
     }
 }
 
+export const postAddLike = (postId, currentUserId) => async dispatch => {
+    const response = await fetch(`/api/posts/${postId}/postlike`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+
+    if(response.ok) {
+        const post = await response.json()
+        dispatch(addPostLike(postId, currentUserId))
+        return post
+    }
+}
+
+export const postDeleteLike = (postId, currentUserId) => async dispatch => {
+    const response = await fetch(`/api/posts/${postId}/postlike`, {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+
+    if(response.ok) {
+        const post = await response.json()
+        dispatch(deletePostLike(postId, currentUserId))
+        return post
+    }
+}
+
 const initialState = { allPosts: {}, user: {} }
 
 export default function reducer (state = initialState, action) {
@@ -132,6 +182,21 @@ export default function reducer (state = initialState, action) {
             newState = {allPosts: {...state.allPosts}, user: {...state.user}}
             if(newState.user[action.postId]) delete newState.user[action.postId]
             if(newState.allPosts[action.postId]) delete newState.allPosts[action.postId]
+            return newState
+        case ADDPOSTLIKE:
+            console.log("This is the addpost like intial state", state)
+            return state
+        case DELETEPOSTLIKE:
+            // console.log("This is the delete post like intiial state", state)
+            newState = {allPosts: {...state.allPosts}, user: {...state.user}}
+            if(newState.allPosts[action.postId].post_likes.some(like => like.user === action.currentUserId)){
+                const postLikes = newState.allPosts[action.postId].post_likes;
+                const updatedPostLikes = postLikes.filter(like => like.user !== action.currentUserId)
+                newState.allPosts[action.postId].post_likes = updatedPostLikes
+                const userLikes = newState.allPosts[action.postId].user_likes;
+                const updatedUserLikes = userLikes.filter(user => user !== action.currentUserId)
+                newState.allPosts[action.postId].user_likes = updatedUserLikes
+            }
             return newState
         default:
             return state

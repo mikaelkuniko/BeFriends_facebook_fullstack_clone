@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { removePost, allPosts, postUpdate } from '../../store/post'
+import { removePost, allPosts, postUpdate,postAddLike, postDeleteLike } from '../../store/post'
 import { authenticate } from '../../store/session'
 import { allComments } from '../../store/comment'
 import EditPostModal from './EditPostModal'
@@ -19,6 +19,8 @@ function PostCards(post) {
         await dispatch(removePost(post.id))
         alert('Post Deleted')
     }
+
+
 
     const currentUser = useSelector((state) => state.session.user.id)
     const currUserObj = useSelector((state) => state.session.user)
@@ -51,13 +53,26 @@ function PostCards(post) {
             }
         })
         await response.json();
-
+        console.log("this is the local state of post prior to delete", localPost)
         const updatedLikes = localPost.post_likes.filter(userId => userId !== currentUser)
+        const updatedUserLikes = localPost.user_likes.filter(userId => userId !== currentUser)
         setLocalPost({
             ...localPost,
-            post_likes: updatedLikes
+            post_likes: updatedLikes,
+            user_likes: updatedUserLikes
         });
+        console.log("this is the local state of post after like delete", localPost)
         dispatch(authenticate())
+    }
+
+    const deletePostLike2 = async () => {
+        console.log("This is current user", currentUser)
+        await dispatch(postDeleteLike(post.id, currentUser))
+        // alert('Post Deleted')
+    }
+
+    const addPostLike2 = async () => {
+        await dispatch(postAddLike(post.id, currentUser))
     }
 
     // const addPostLike = async (e) => {
@@ -82,12 +97,15 @@ function PostCards(post) {
             }
         })
         const newLike = await response.json();
-
+        console.log("this is local state of post prior to like", localPost)
         const updatedLikes = [...localPost.post_likes, newLike]
+        const updatedUserLikes = [...localPost.user_likes, currentUser]
         setLocalPost({
             ...localPost,
-            post_likes: updatedLikes
+            post_likes: updatedLikes,
+            user_likes: updatedUserLikes
         })
+        console.log("this is local state of post after to like", localPost)
         dispatch(authenticate())
     }
 
@@ -145,10 +163,10 @@ function PostCards(post) {
                     {/* <div onClick={() => { alert('Coming soon!') }} id='likes-div'>
                         <i class="fa-regular fa-thumbs-up" ></i> Like
                     </div> */}
-                    {!userLikedPost && (<div onClick={addPostLike} id='likes-div'>
+                    {!userLikedPost && (<div onClick={addPostLike2} id='likes-div'>
                         <i class="fa-regular fa-thumbs-up" ></i> Like
                     </div>)}
-                    {userLikedPost && (<div onClick={deletePostLike}> 
+                    {userLikedPost && (<div onClick={deletePostLike2}> 
                     <i class="fa-solid fa-thumbs-up" ></i> Like </div>)}
                     <div>
                         <i class="fa-regular fa-comment"></i> Comment
