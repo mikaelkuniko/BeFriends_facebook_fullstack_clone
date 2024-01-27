@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { removePost, allPosts, postUpdate } from '../../store/post'
+import { removePost, allPosts, postUpdate,postAddLike, postDeleteLike } from '../../store/post'
 import { authenticate } from '../../store/session'
 import { allComments } from '../../store/comment'
 import EditPostModal from './EditPostModal'
@@ -19,6 +19,8 @@ function PostCards(post) {
         await dispatch(removePost(post.id))
         alert('Post Deleted')
     }
+
+
 
     const currentUser = useSelector((state) => state.session.user.id)
     const currUserObj = useSelector((state) => state.session.user)
@@ -61,6 +63,16 @@ function PostCards(post) {
         });
         console.log("this is the local state of post after like delete", localPost)
         dispatch(authenticate())
+    }
+
+    const deletePostLike2 = async () => {
+        console.log("This is current user", currentUser)
+        await dispatch(postDeleteLike(post.id, currentUser))
+        // alert('Post Deleted')
+    }
+
+    const addPostLike2 = async () => {
+        await dispatch(postAddLike(post.id, currentUser))
     }
 
     // const addPostLike = async (e) => {
@@ -151,10 +163,10 @@ function PostCards(post) {
                     {/* <div onClick={() => { alert('Coming soon!') }} id='likes-div'>
                         <i class="fa-regular fa-thumbs-up" ></i> Like
                     </div> */}
-                    {!userLikedPost && (<div onClick={addPostLike} id='likes-div'>
+                    {!userLikedPost && (<div onClick={addPostLike2} id='likes-div'>
                         <i class="fa-regular fa-thumbs-up" ></i> Like
                     </div>)}
-                    {userLikedPost && (<div onClick={deletePostLike}> 
+                    {userLikedPost && (<div onClick={deletePostLike2}> 
                     <i class="fa-solid fa-thumbs-up" ></i> Like </div>)}
                     <div>
                         <i class="fa-regular fa-comment"></i> Comment
