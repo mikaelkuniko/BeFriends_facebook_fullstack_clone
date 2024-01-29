@@ -67,7 +67,6 @@ function PostCards(post) {
 
     const deletePostLike = async () => {
         await dispatch(postDeleteLike(post.id, currentUser))
-        // alert('Post Deleted')
     }
 
     const addPostLike = async () => {
@@ -162,11 +161,11 @@ function PostCards(post) {
                     {/* <div onClick={() => { alert('Coming soon!') }} id='likes-div'>
                         <i class="fa-regular fa-thumbs-up" ></i> Like
                     </div> */}
-                    {!userLikedPost && (<div onClick={addPostLike} id='likes-div'>
-                        <i class="fa-regular fa-thumbs-up" ></i> Like
+                    {!userLikedPost && (<div onClick={addPostLike} class='likes-div'>
+                        <i class="fa-regular fa-thumbs-up" id='add-like'></i> Like
                     </div>)}
-                    {userLikedPost && (<div onClick={deletePostLike}> 
-                    <i class="fa-solid fa-thumbs-up" ></i> Like </div>)}
+                    {userLikedPost && (<div onClick={deletePostLike} class='likes-div'> 
+                    <i class="fa-solid fa-thumbs-up" id='delete-like'></i> Like </div>)}
                     <div>
                         <i class="fa-regular fa-comment"></i> Comment
                     </div>
