@@ -44,11 +44,12 @@ const deletePost = (postId) => {
     }
 }
 
-const addPostLike = (postId, currentUserId) => {
+const addPostLike = (postId, currentUserId, newLike) => {
     return {
         type: ADDPOSTLIKE,
         postId, 
-        currentUserId
+        currentUserId,
+        newLike
     }
 }
 
@@ -132,9 +133,9 @@ export const postAddLike = (postId, currentUserId) => async dispatch => {
     })
 
     if(response.ok) {
-        const post = await response.json()
-        dispatch(addPostLike(postId, currentUserId))
-        return post
+        const post_like = await response.json()
+        dispatch(addPostLike(postId, currentUserId, post_like))
+        return post_like
     }
 }
 
@@ -184,8 +185,12 @@ export default function reducer (state = initialState, action) {
             if(newState.allPosts[action.postId]) delete newState.allPosts[action.postId]
             return newState
         case ADDPOSTLIKE:
-            console.log("This is the addpost like intial state", state)
-            return state
+            newState = {allPosts: {...state.allPosts}, user: {...state.user}}
+            const updatedLikes = [...newState.allPosts[action.postId].post_likes, action.newLike]
+            const updatedUserLikes = [...newState.allPosts[action.postId].user_likes, action.currentUserId]
+            newState.allPosts[action.postId].post_likes = updatedLikes;
+            newState.allPosts[action.postId].user_likes = updatedUserLikes;
+            return newState
         case DELETEPOSTLIKE:
             // console.log("This is the delete post like intiial state", state)
             newState = {allPosts: {...state.allPosts}, user: {...state.user}}

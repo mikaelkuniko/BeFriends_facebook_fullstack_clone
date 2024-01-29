@@ -43,35 +43,34 @@ function PostCards(post) {
 
 
     // creates method to delete a like from post
-    const deletePostLike = async (e) => {
-        e.preventDefault();
-        // preventdefault prevents infinite loading of the page
-        const response = await fetch(`/api/posts/${post.id}/postlike`, {
-            method: 'DELETE',
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        await response.json();
-        console.log("this is the local state of post prior to delete", localPost)
-        const updatedLikes = localPost.post_likes.filter(userId => userId !== currentUser)
-        const updatedUserLikes = localPost.user_likes.filter(userId => userId !== currentUser)
-        setLocalPost({
-            ...localPost,
-            post_likes: updatedLikes,
-            user_likes: updatedUserLikes
-        });
-        console.log("this is the local state of post after like delete", localPost)
-        dispatch(authenticate())
-    }
+    // const deletePostLike = async (e) => {
+    //     e.preventDefault();
+    //     // preventdefault prevents infinite loading of the page
+    //     const response = await fetch(`/api/posts/${post.id}/postlike`, {
+    //         method: 'DELETE',
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         }
+    //     })
+    //     await response.json();
+    //     console.log("this is the local state of post prior to delete", localPost)
+    //     const updatedLikes = localPost.post_likes.filter(userId => userId !== currentUser)
+    //     const updatedUserLikes = localPost.user_likes.filter(userId => userId !== currentUser)
+    //     setLocalPost({
+    //         ...localPost,
+    //         post_likes: updatedLikes,
+    //         user_likes: updatedUserLikes
+    //     });
+    //     console.log("this is the local state of post after like delete", localPost)
+    //     dispatch(authenticate())
+    // }
 
-    const deletePostLike2 = async () => {
-        console.log("This is current user", currentUser)
+    const deletePostLike = async () => {
         await dispatch(postDeleteLike(post.id, currentUser))
         // alert('Post Deleted')
     }
 
-    const addPostLike2 = async () => {
+    const addPostLike = async () => {
         await dispatch(postAddLike(post.id, currentUser))
     }
 
@@ -88,26 +87,26 @@ function PostCards(post) {
     // }
 
 
-    const addPostLike = async (e) => {
-        e.preventDefault();
-        const response = await fetch(`/api/posts/${post.id}/postlike`, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        const newLike = await response.json();
-        console.log("this is local state of post prior to like", localPost)
-        const updatedLikes = [...localPost.post_likes, newLike]
-        const updatedUserLikes = [...localPost.user_likes, currentUser]
-        setLocalPost({
-            ...localPost,
-            post_likes: updatedLikes,
-            user_likes: updatedUserLikes
-        })
-        console.log("this is local state of post after to like", localPost)
-        dispatch(authenticate())
-    }
+    // const addPostLike = async (e) => {
+    //     e.preventDefault();
+    //     const response = await fetch(`/api/posts/${post.id}/postlike`, {
+    //         method: 'POST',
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         }
+    //     })
+    //     const newLike = await response.json();
+    //     console.log("this is local state of post prior to like", localPost)
+    //     const updatedLikes = [...localPost.post_likes, newLike]
+    //     const updatedUserLikes = [...localPost.user_likes, currentUser]
+    //     setLocalPost({
+    //         ...localPost,
+    //         post_likes: updatedLikes,
+    //         user_likes: updatedUserLikes
+    //     })
+    //     console.log("this is local state of post after to like", localPost)
+    //     dispatch(authenticate())
+    // }
 
     useEffect(() => {
         dispatch(allPosts())
@@ -163,10 +162,10 @@ function PostCards(post) {
                     {/* <div onClick={() => { alert('Coming soon!') }} id='likes-div'>
                         <i class="fa-regular fa-thumbs-up" ></i> Like
                     </div> */}
-                    {!userLikedPost && (<div onClick={addPostLike2} id='likes-div'>
+                    {!userLikedPost && (<div onClick={addPostLike} id='likes-div'>
                         <i class="fa-regular fa-thumbs-up" ></i> Like
                     </div>)}
-                    {userLikedPost && (<div onClick={deletePostLike2}> 
+                    {userLikedPost && (<div onClick={deletePostLike}> 
                     <i class="fa-solid fa-thumbs-up" ></i> Like </div>)}
                     <div>
                         <i class="fa-regular fa-comment"></i> Comment
