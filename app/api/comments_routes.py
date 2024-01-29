@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Comment
 from sqlalchemy import or_
-from ..models import db, Comment
+from ..models import db, Comment, User
 from ..forms import CommentForm
 
 comment_routes = Blueprint('comment', __name__)
@@ -42,7 +42,7 @@ def new_form():
         form.populate_obj(new_comment)
         new_comment.user_id = current_user.id
         # need to post in current post id
-        print("------------this new comment-------", new_comment)
+        # print("------------this new comment-------", new_comment)
         db.session.add(new_comment)
         db.session.commit()
         return new_comment.to_dict(), 201
@@ -85,3 +85,48 @@ def delete_item(id):
     if not comment:
         return {"errors": "comment not found"}, 404
     return {"message": "comment deleted"}
+
+@comment_routes.route('/<int:id>/commentlike', methods=['POST'])
+@login_required
+def add_comment_like(id):
+    """
+    Adds a like to a comment by current user//
+    WIP
+    """
+    current = current_user.to_dict()
+    user = User.query.get(current['id'])
+    comment = Comment.query.get(id)
+    # print('Inside the post like')
+    # print("This is the current user", user)
+    # print("This is the post ID", post)
+
+    # maybe remove feature for now, ask cory if necessary
+
+    comment.comment_user_likes.append(user)
+    db.session.add(user)
+    db.session.commit()
+
+    return {"message": "Liked comment"}, 200
+
+@comment_routes.route('/<int:id>/commentlike', methods=['DELETE'])
+@login_required
+def delete_comment_like(id):
+    """
+    Delete the like that the User input on the comment
+
+    WIP
+    """
+    comment = Comment.query.get(id)
+    current = current_user.to_dict()
+    user = User.query.get(current['id'])
+
+    if len(comment.comment_user_likes):
+        for i in range(len(comment.comment_user_likes)):
+            if comment.comment_user_likes[i].id == user.id:
+                comment.comment_user_likes.pop(i)
+                db.session.add(comment)
+                db.session.commit()
+
+                return {'message': 'deleted like from comment'}
+            
+    return {'errors': 'Comment not found'}, 404

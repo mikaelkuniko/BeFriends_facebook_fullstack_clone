@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
+# from .join_tables import post_likes, comment_likes
 
 
 class User(db.Model, UserMixin):
@@ -24,10 +25,34 @@ class User(db.Model, UserMixin):
     updated_at = db.Column(db.DateTime(timezone=True), default=func.now())
 
     # USER CLASS RELATIONSHIPS
-    # One to many: User has many posts through owner_id
+    # One to many: User has many posts through user_id
     post = db.relationship('Post', back_populates='user', cascade='all, delete-orphan')
 
     comment = db.relationship('Comment', back_populates='user', cascade='all, delete-orphan')
+
+    # create one to many relationship for aws profile pictures
+
+    # create method to check user who liked picture using secondary join tables and show the name in the home feed
+
+    # Many to many: User has many liked posts through post_likes and many liked comments through comment_likes
+    # user_post_likes = db.relationship("Post",
+    #                                   secondary=post_likes,
+    #                                 #   primaryjoin="User.id == post_likes.c.user_id",
+    #                                 #   secondaryjoin="Post.id == post_likes.c.post_id",
+    #                                   back_populates="post_user_likes")
+    
+    # user_comment_likes = db.relationship("Comment",
+    #                             secondary=comment_likes,
+    #                             # primaryjoin="User.id == comment_likes.c.user_id",
+    #                             # secondaryjoin="Comment.id == comment_likes.c.comment_id",
+    #                             back_populates='comment_user_likes')
+    
+    '''
+    # revised with joins table recreated as a model (1/3/2024)
+
+    
+    '''
+    post_likes = db.relationship('Post_Like', back_populates='user', cascade='all, delete')
 
     @property
     def password(self):
@@ -55,6 +80,8 @@ class User(db.Model, UserMixin):
             posts,
             comments
         }
+
+        Returns the object for front end use
         '''
         return {
             'id': self.id,
@@ -66,7 +93,6 @@ class User(db.Model, UserMixin):
             'birthday': self.birthday,
             'gender': self.gender,
             'posts': [post.to_dict() for post in self.post],
-            # 'comments': [comment.to_dict() for comment in self.comment]
         }
 
     def to_dict_info(self):

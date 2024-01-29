@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { allComments, removeComment } from "../../store/comment";
+import { authenticate } from "../../store/session";
 import EditCommentModal from "./EditCommentModal";
 import './CommentCards.css'
 
@@ -13,12 +14,39 @@ function CommentCards(comment) {
 
     // console.log('This is comment', comment)
 
+    // console.log("This is comment obj check for likes", comment)
+
     const currentUserId = useSelector((state) => state.session.user.id)
     const user = useSelector((state) => state.session.user)
 
     const deleteComment = async () => {
         await dispatch(removeComment(comment.id))
         alert('Comment Deleted')
+    }
+
+    // creates method to delete a like from comment
+    const deleteCommentLike = async (e) => {
+        e.preventDefault();
+        const response = await fetch(`/api/users/${currentUserId}/commentlike`, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        await response.json();
+        dispatch(authenticate())
+    }
+
+    const addCommentLike = async (e) => {
+        e.preventDefault();
+        const response = await fetch(`/api/users/${currentUserId}/commentlike`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        await response.json();
+        dispatch(authenticate())
     }
 
 

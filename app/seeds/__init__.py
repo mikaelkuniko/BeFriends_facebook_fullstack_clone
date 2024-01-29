@@ -2,6 +2,8 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .posts import seed_posts, undo_posts
 from .comments import seed_comments, undo_comments
+from .join_tables import seed_join_tables, undo_join_tables, seed_post_likes, undo_post_likes
+
 
 from app.models.db import db, environment, SCHEMA
 
@@ -18,18 +20,29 @@ def seed():
         # command, which will  truncate all tables prefixed with
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
+        undo_join_tables()
         undo_comments()
         undo_posts()
         undo_users()
     seed_users()
+    print('Users seeded')
     seed_posts()
+    print('Posts seeded')
     seed_comments()
+    print('Comments seeded')
+    # seed_join_tables()
+    seed_post_likes()
+    print('Post likes seeded')
+    # print('Likes seeded')
+
     # Add other seed functions here
 
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
+    undo_post_likes()
+    # undo_join_tables()
     undo_comments()
     undo_posts()
     undo_users()
