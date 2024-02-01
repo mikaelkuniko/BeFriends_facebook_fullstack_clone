@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { removePost, allPosts, postUpdate,postAddLike, postDeleteLike } from '../../store/post'
-import { authenticate } from '../../store/session'
+import { authenticate, loadAllUsers } from '../../store/session'
 import { allComments } from '../../store/comment'
 import EditPostModal from './EditPostModal'
 import './PostCards.css'
@@ -13,7 +13,6 @@ import CreateCommentForm from './CreateCommentForm'
 
 function PostCards(post) {
     const dispatch = useDispatch()
-    const [localPost, setLocalPost] = useState(post)
 
     const deletePost = async () => {
         await dispatch(removePost(post.id))
@@ -35,7 +34,8 @@ function PostCards(post) {
     const postComments = comments.filter((comment) => Number(post.id) === Number(comment.post.id))
     // console.log("This is the post's comments", postComments)
     // console.log("This is single post", post)
-    // console.log("This is post", post)
+    console.log("This is post", post)
+    console.log("This is current user", currentUser)
     // console.log("this is the user_id of those who liked the post", post.user_likes)
     const userLikedPost = post.user_likes.includes(currentUser)
     // console.log("Did current user like the post", userLikedPost)
@@ -110,13 +110,15 @@ function PostCards(post) {
     useEffect(() => {
         dispatch(allPosts())
         dispatch(allComments())
+        // added in 02/1
+        dispatch(loadAllUsers())
     }, [dispatch])
     // const post = useSelector(state => state.posts)
     // console.log("This is single post", post)
 
-    useEffect(() => {
-        setLocalPost(post);
-    }, [post])
+    // useEffect(() => {
+    //     setLocalPost(post);
+    // }, [post])
 
 
     if (!post) return null
