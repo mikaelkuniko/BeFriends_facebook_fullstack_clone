@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux'
 import { Redirect } from "react-router-dom";
-// import './index.css'
+import './index.css'
 import * as sessionActions from '../../store/session'
 import * as postActions from '../../store/post'
 import PostCards from "../homepage/PostCards";
@@ -11,7 +11,7 @@ function Userpage(){
 
     const dispatch = useDispatch()
     const userPosts = useSelector(state => state.posts.user)
-    // console.log("This is userPosts", userPosts)
+    console.log("This is userPosts", userPosts)
     const posts = Object.values(userPosts).reverse()
     // this variable sets so that all posts are in chronological order
     const user = useSelector(state=>state.session.user)

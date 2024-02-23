@@ -39,6 +39,7 @@ function App() {
           <Homepage/>
         </Route>
         <Route path='/:userId'>
+          <Navigation/>
           <Userpage/>
         </Route>
         {/* <Route path='/sign-up' exact={true}>
