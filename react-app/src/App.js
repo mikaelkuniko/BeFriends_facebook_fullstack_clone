@@ -37,6 +37,9 @@ function App() {
           <Navigation/>
           <Homepage/>
         </Route>
+        <Route path='/:userId'>
+          hello
+        </Route>
         {/* <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route> */}
