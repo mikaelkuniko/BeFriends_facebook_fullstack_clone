@@ -190,6 +190,10 @@ export default function reducer (state = initialState, action) {
             const updatedUserLikes = [...newState.allPosts[action.postId].user_likes, action.currentUserId]
             newState.allPosts[action.postId].post_likes = updatedLikes;
             newState.allPosts[action.postId].user_likes = updatedUserLikes;
+            const updatedLikesForUser = [...newState.user[action.postId].post_likes, action.newLike]
+            const updatedUserLikesForUser = [...newState.user[action.postId].user_likes, action.currentUserId]
+            newState.user[action.postId].post_likes = updatedLikesForUser;
+            newState.user[action.postId].user_likes = updatedUserLikesForUser;
             return newState
         case DELETEPOSTLIKE:
             // console.log("This is the delete post like intiial state", state)
@@ -201,6 +205,14 @@ export default function reducer (state = initialState, action) {
                 const userLikes = newState.allPosts[action.postId].user_likes;
                 const updatedUserLikes = userLikes.filter(user => user !== action.currentUserId)
                 newState.allPosts[action.postId].user_likes = updatedUserLikes
+            }
+            if(newState.user[action.postId].post_likes.some(like => like.user === action.currentUserId)){
+                const postLikes = newState.user[action.postId].post_likes;
+                const updatedPostLikes = postLikes.filter(like => like.user !== action.currentUserId)
+                newState.user[action.postId].post_likes = updatedPostLikes
+                const userLikes = newState.user[action.postId].user_likes;
+                const updatedUserLikes = userLikes.filter(user => user !== action.currentUserId)
+                newState.user[action.postId].user_likes = updatedUserLikes
             }
             return newState
         default:
